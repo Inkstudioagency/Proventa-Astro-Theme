@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": "Articles shown on /blog, the home page and the blog detail pages."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "authorDesignation": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Management",
+        "Compliance",
+        "Strategy",
+        "Marketing",
+        "Leadership",
+        "Productivity",
+        "Sourcing"
+      ]
+    },
+    "socialLinkOne": {
+      "type": "string"
+    },
+    "socialLinkTwo": {
+      "type": "string"
+    },
+    "socialLinkThree": {
+      "type": "string"
+    },
+    "socialLinkFour": {
+      "type": "string"
+    },
+    "details": {
+      "type": "richtext"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "publishDate": {
+      "type": "date"
+    }
+  }
+}

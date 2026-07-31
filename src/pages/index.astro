@@ -1,0 +1,1220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const jsonLd = `{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Proventa",
+  "url": "/",
+  "description": "A powerful user management platform offering the most comprehensive set of features for streamlined access, control, and administration. Manage people, projects, and performance with global payroll, automated onboarding, time tracking, and compliance tools.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Basic Plan",
+      "description": "Up to 25 employees with basic HR features, core HR workflows, time-off tracking, essential integrations, and community support access",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Teams Pricing",
+      "description": "Up to 100 employees with performance management tools, customizable workflows, dedicated support team, and advanced reporting",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Enterprise",
+      "description": "Unlimited employees with dedicated account manager, custom integrations, 24/7 priority support, and compliance assistance",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "featureList": [
+    "Global Payroll",
+    "Automated Onboarding",
+    "Time & Attendance Tracking",
+    "Performance Review",
+    "Employee Directory",
+    "Compliance & Security",
+    "Real-time Project Evaluation",
+    "Smart Timer",
+    "Advanced Schedule System",
+    "Salary Distribution Analysis"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "reviewCount": "4"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Ethan Williams",
+        "jobTitle": "Digital Marketing Specialist"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Daniel Thompson",
+        "jobTitle": "Manager"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Managing employee records, leave requests, and internal processes used to be overwhelming. With this system, everything is organised and automated. It has truly improved."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Anderson",
+        "jobTitle": "Administrator"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "jobTitle": "Coordinator"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "We reduced payroll errors to zero within the first month. The system is intuitive, fast, and reliable—exactly what we needed."
+    }
+  ]
+}`;
+import { getBlogs } from '../lib/strapi';
+import CollectionList from '../components/CollectionList.astro';
+import BlogCard from '../components/BlogCard.astro';
+import FeaturedBlogCard from '../components/FeaturedBlogCard.astro';
+const blogs = await getBlogs();
+const homeFeatured = blogs.filter((b) => b.isFeatured).slice(0, 1);
+const rest = blogs.filter((b) => !b.isFeatured);
+const homeSecond = rest.slice(0, 1);
+// second row spans all three grid columns
+const homeRest = rest.slice(1, 4);
+const slide1 = blogs.slice(0, 1);
+const slide2 = blogs.slice(1, 2);
+const slide3 = blogs.slice(2, 3);
+const slide4 = blogs.slice(3, 4);
+const slide5 = blogs.slice(4, 5);
+---
+
+<BaseLayout
+  title={`Proventa - Saas Astro Theme`}
+  wfPage="6a6ade7014d4ca494252bfcf"
+  description={`Proventa is a conversion-focused Astro theme for Business, Software, and SaaS companies to present products with clarity, capture leads, build trust, and establish a modern, professional online presence that drives growth and credibility.`}
+  ogImage={`https://cdn.prod.website-files.com/69df29ae693be6c15d65e13f/69e92760f35acb5c0b3b554f_open%20graph%20image%20(7).png`}
+  jsonLd={jsonLd}
+>
+  <div class="page-wrapper">
+    <Navbar />
+    <main class="main-wrapper">
+      <section class="section_hero">
+        <div class="hero-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="hero-wrapper">
+              <div class="hero-content-block">
+                <div class="hero-title-block">
+                  <h1 class="heading-style-1 title-animation">Manage People Projects &amp; Performance</h1>
+                </div>
+                <div class="hero-summary-block">
+                  <p class="text-size-large text-align-center text-weight-medium summary-animation">A powerful user management platform offering the most comprehensive set of features for streamlined access, control, and administration.</p>
+                </div>
+                <div class="hero-button-block">
+                  <a href="/contact" data-wf--primary-button--variant="v1" class="primary-button w-inline-block">
+                    <div class="button-content-block">
+                      <div class="button-text-block">
+                        <div class="button-text is-1">Get Started for free</div>
+                        <div class="button-text is-2">Get Started for free</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div data-w-id="078553d9-2cff-f47a-2977-313ba0bbfa3a" class="hero-image-block">
+                <div class="hero-image-innerr-block"><img src="/images/HR-SaaS-Dashboard.png" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" srcset="/images/HR-SaaS-Dashboard-p-500.png 500w, /images/HR-SaaS-Dashboard-p-800.png 800w, /images/HR-SaaS-Dashboard-p-1080.png 1080w, /images/HR-SaaS-Dashboard.png 1142w" alt="PointHR dashboard showing time to hire, total employees, active timer for Zendesk Website Design, total work hours calendar, salary distribution by department and bonuses, project evaluation status, and a weekly meeting schedule for November 2024." class="hero-image"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-overlay"></div>
+      </section>
+      <section class="section_logo">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="logo-wrapper">
+              <div class="section-heading-block bottom-gap-sm">
+                <div class="section-title-block">
+                  <div class="text-size-large text-align-center text-weight-medium text-color-black">Trusted by Industry Leaders Across the Globe</div>
+                </div>
+              </div>
+              <div data-w-id="9ee6e7de-a9b7-9697-1849-6c7656498942" class="logo-content-block">
+                <div class="logo-row-block"><img loading="lazy" src="/images/Zantic.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Flikbox.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Digice.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Crona.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Unify.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Unicoin.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Tapline.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Tandem.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Heline.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Pera.svg" alt="logo" class="logo"></div>
+                <div class="logo-row-block"><img loading="lazy" src="/images/Zantic.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Flikbox.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Digice.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Crona.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Unify.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Unicoin.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Tapline.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Tandem.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Heline.svg" alt="logo" class="logo"><img loading="lazy" src="/images/Pera.svg" alt="logo" class="logo"></div>
+                <div class="logo-overlay-block"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section_automation" class="section_automation">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="automation-wrapper">
+              <div class="section-heading-block">
+                <div class="section-title-block mobile-width-25rem">
+                  <h2 class="heading-style-2 text-align-center title-animation">Receivables Automation at Acale</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-40rem">
+                  <p class="text-size-large text-align-center summary-animation">Create one-time invoices and credit notes, recalculate usage-based invoices in seconds and issue hundreds of invoices at once.</p>
+                </div>
+              </div>
+              <div data-w-id="4bb7befd-3979-4dab-ac3c-068dca7cb2a3" class="section-relative-block">
+                <div class="automation-sticky-block">
+                  <div class="automation-content-block">
+                    <div class="automation-card-block is-1">
+                      <div class="automation-card-icon-block">
+                        <div class="automation-card-icon w-embed"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#155DFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 2C9.43223 4.69615 8 8.27674 8 12C8 15.7233 9.43223 19.3038 12 22C14.5678 19.3038 16 15.7233 16 12C16 8.27674 14.5678 4.69615 12 2Z" stroke="#155DFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M2 12H22" stroke="#155DFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Global Payroll</h3>
+                        <p class="text-size-regular">Run payroll for your global team in minutes. Automated compliance, taxes, and direct deposits.</p>
+                      </div>
+                      <div class="automation-card-overlay"></div>
+                    </div>
+                    <div class="automation-card-block is-2">
+                      <div class="automation-card-icon-block is-2">
+                        <div class="automation-card-icon w-embed"><svg width="20" height="22" viewbox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.00341 13.0026C1.81418 13.0032 1.62864 12.9502 1.46836 12.8496C1.30809 12.749 1.17964 12.605 1.09796 12.4343C1.01628 12.2636 0.984703 12.0732 1.00691 11.8853C1.02912 11.6973 1.10419 11.5196 1.22341 11.3726L11.1234 1.1726C11.1977 1.08689 11.2989 1.02896 11.4104 1.00834C11.5219 0.987714 11.6371 1.00562 11.7371 1.05911C11.8371 1.1126 11.916 1.1985 11.9607 1.30271C12.0055 1.40692 12.0135 1.52325 11.9834 1.6326L10.0634 7.6526C10.0068 7.80413 9.98778 7.96712 10.008 8.12761C10.0282 8.2881 10.0871 8.44129 10.1795 8.57403C10.2719 8.70678 10.3952 8.81512 10.5387 8.88976C10.6822 8.96441 10.8417 9.00313 11.0034 9.0026H18.0034C18.1926 9.00196 18.3782 9.05502 18.5385 9.15563C18.6987 9.25623 18.8272 9.40025 18.9089 9.57095C18.9905 9.74165 19.0221 9.93202 18.9999 10.1199C18.9777 10.3079 18.9026 10.4856 18.7834 10.6326L8.88341 20.8326C8.80915 20.9183 8.70795 20.9762 8.59643 20.9969C8.48491 21.0175 8.36969 20.9996 8.26968 20.9461C8.16967 20.8926 8.09083 20.8067 8.04607 20.7025C8.00132 20.5983 7.99333 20.482 8.02341 20.3726L9.94341 14.3526C10 14.2011 10.019 14.0381 9.99882 13.8776C9.9786 13.7171 9.91975 13.5639 9.82732 13.4312C9.73489 13.2984 9.61164 13.1901 9.46813 13.1154C9.32463 13.0408 9.16516 13.0021 9.00341 13.0026H2.00341Z" stroke="#9810FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Automated Onboarding</h3>
+                        <p class="text-size-regular">Customizable workflows that welcome new hires with digital contracts, equipment provisioning, and training.</p>
+                      </div>
+                      <div class="automation-card-overlay is-2"></div>
+                    </div>
+                    <div class="automation-card-block is-3">
+                      <div class="automation-card-icon-block is-3">
+                        <div class="automation-card-icon w-embed"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#009966" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 6V12L16 14" stroke="#009966" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Time &amp; Attendance</h3>
+                        <p class="text-size-regular">Track time off, holidays, and sick leave with easy approvals and calendar sync.</p>
+                      </div>
+                      <div class="automation-card-overlay is-3"></div>
+                    </div>
+                    <div class="automation-card-block is-4">
+                      <div class="automation-card-icon-block is-4">
+                        <div class="automation-card-icon w-embed"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H21" stroke="#E17100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M18 17V9" stroke="#E17100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13 17V5" stroke="#E17100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8 17V14" stroke="#E17100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Performance Review</h3>
+                        <p class="text-size-regular">Set goals, run 360 reviews, and track employee growth with built-in templates and analytics.</p>
+                      </div>
+                      <div class="automation-card-overlay is-4"></div>
+                    </div>
+                    <div class="automation-card-block is-5">
+                      <div class="automation-card-icon-block is-5">
+                        <div class="automation-card-icon w-embed"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H6C4.93913 15 3.92172 15.4214 3.17157 16.1716C2.42143 16.9217 2 17.9391 2 19V21" stroke="#EC003F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="#EC003F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M22 21V19C21.9993 18.1137 21.7044 17.2528 21.1614 16.5523C20.6184 15.8519 19.8581 15.3516 19 15.13" stroke="#EC003F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="#EC003F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Employee Directory</h3>
+                        <p class="text-size-regular">A beautiful org chart and directory that keeps everyone connected, no matter where they work.</p>
+                      </div>
+                      <div class="automation-card-overlay is-5"></div>
+                    </div>
+                    <div class="automation-card-block is-6">
+                      <div class="automation-card-icon-block">
+                        <div class="automation-card-icon w-embed"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 13C20 18 16.5 20.5 12.34 21.95C12.1222 22.0238 11.8855 22.0203 11.67 21.94C7.5 20.5 4 18 4 13V5.99999C4 5.73478 4.10536 5.48042 4.29289 5.29289C4.48043 5.10535 4.73478 4.99999 5 4.99999C7 4.99999 9.5 3.79999 11.24 2.27999C11.4519 2.09899 11.7214 1.99954 12 1.99954C12.2786 1.99954 12.5481 2.09899 12.76 2.27999C14.51 3.80999 17 4.99999 19 4.99999C19.2652 4.99999 19.5196 5.10535 19.7071 5.29289C19.8946 5.48042 20 5.73478 20 5.99999V13Z" stroke="#45556C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 12L11 14L15 10" stroke="#45556C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg></div>
+                      </div>
+                      <div class="automation-card-content-block">
+                        <h3 class="heading-style-5">Compliance &amp; Security</h3>
+                        <p class="text-size-regular">Enterprise-grade security with SOC2 compliance. We handle the complex local regulations for you.</p>
+                      </div>
+                      <div class="automation-card-overlay is-6"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section_lifecycle" class="section_lifecycle">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="lifecycle-wrapper">
+              <div class="section-heading-block">
+                <div class="section-title-block max-width-40rem">
+                  <h2 class="heading-style-2 text-align-center title-animation">One Platform for the Entire Employee Lifecycle</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-35rem">
+                  <p class="text-size-large text-align-center summary-animation">Sequence gives you a flexible toolkit to scale your design infrastructure, without building everything in house.</p>
+                </div>
+              </div>
+              <div class="lifecycle-content-block">
+                <div id="w-node-_11622dc0-39fa-dbe5-6aff-f36d6712c28c-4252bfcf" data-w-id="11622dc0-39fa-dbe5-6aff-f36d6712c28c" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="lifecycle-card-block">
+                  <div class="lifecycle-card-text-block">
+                    <h3 class="heading-style-5">Real-time Project Evaluation</h3>
+                    <p class="text-size-regular">Real-time data integrations enable instant syncing and updating of</p>
+                  </div>
+                  <div class="lifecycle-card-image-block">
+                    <div data-poster-url="/videos/PointHR---01_poster.0000000.jpg" data-video-urls="/videos/PointHR---01_mp4.mp4,/videos/PointHR---01_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="lifecycle-card-image w-background-video w-background-video-atom"><video id="6c9ce30d-438b-0dc9-2eb7-45aa60de7fe1-video" autoplay="" loop="" style="background-image:url(&quot;/videos/PointHR---01_poster.0000000.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                        <source src="/videos/PointHR---01_mp4.mp4" data-wf-ignore="true">
+                        <source src="/videos/PointHR---01_webm.webm" data-wf-ignore="true">
+                      </video><noscript>
+                        <style is:inline>
+  [data-wf-bgvideo-fallback-img] {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-wf-bgvideo-fallback-img] {
+      position: absolute;
+      z-index: -100;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }</style><img data-wf-bgvideo-fallback-img="true" src="/videos/PointHR---01_poster.0000000.jpg" alt="">
+                      </noscript>
+                      <div aria-live="polite"><button type="button" data-w-bg-video-control="true" aria-controls="6c9ce30d-438b-0dc9-2eb7-45aa60de7fe1-video" class="w-backgroundvideo-backgroundvideoplaypausebutton display-none w-background-video--control"><span><img src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628299f8aa233b83918e24fd_Pause.svg" loading="lazy" alt="Pause video"></span><span hidden=""><img loading="lazy" alt="Play video" src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628298b20ae0236682d4b87f_Play-24.svg"></span></button></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_53a215d3-872c-0bc8-fd30-8fb53d27eda3-4252bfcf" data-w-id="53a215d3-872c-0bc8-fd30-8fb53d27eda3" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="lifecycle-card-block">
+                  <div class="lifecycle-card-text-block">
+                    <h3 class="heading-style-5">Smart Timer for efficient operations</h3>
+                    <p class="text-size-regular">Smart actions streamline operations by automating tasks, reducing manual effort, and enhancing decision-making.</p>
+                  </div>
+                  <div class="lifecycle-card-image-block">
+                    <div data-poster-url="/videos/PointHR---02_poster.0000000.jpg" data-video-urls="/videos/PointHR---02_mp4.mp4,/videos/PointHR---02_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="lifecycle-card-image md w-background-video w-background-video-atom"><video id="5f1c1a18-48ac-2e5e-b23a-21d3b5711fa0-video" autoplay="" loop="" style="background-image:url(&quot;/videos/PointHR---02_poster.0000000.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                        <source src="/videos/PointHR---02_mp4.mp4" data-wf-ignore="true">
+                        <source src="/videos/PointHR---02_webm.webm" data-wf-ignore="true">
+                      </video><noscript>
+                        <style is:inline>
+  [data-wf-bgvideo-fallback-img] {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-wf-bgvideo-fallback-img] {
+      position: absolute;
+      z-index: -100;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }</style><img data-wf-bgvideo-fallback-img="true" src="/videos/PointHR---02_poster.0000000.jpg" alt="">
+                      </noscript>
+                      <div aria-live="polite"><button type="button" data-w-bg-video-control="true" aria-controls="5f1c1a18-48ac-2e5e-b23a-21d3b5711fa0-video" class="w-backgroundvideo-backgroundvideoplaypausebutton display-none w-background-video--control"><span><img src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628299f8aa233b83918e24fd_Pause.svg" loading="lazy" alt="Pause video"></span><span hidden=""><img loading="lazy" alt="Play video" src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628298b20ae0236682d4b87f_Play-24.svg"></span></button></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_8b95a8ec-113e-65e1-d3c7-79a1b8442e1f-4252bfcf" data-w-id="8b95a8ec-113e-65e1-d3c7-79a1b8442e1f" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="lifecycle-card-block">
+                  <div class="lifecycle-card-text-block">
+                    <h3 class="heading-style-5">Never out of sync</h3>
+                    <p class="text-size-regular">Create field mappings, link objects and sync records with your existing tools.</p>
+                  </div>
+                  <div class="lifecycle-card-image-block">
+                    <div class="lifecycle-card-image small" data-w-id="9f930ffa-ea40-0900-8337-d23a9c8866db" data-animation-type="lottie" data-src="/documents/animation-7.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="5.666666666666667" data-duration="0" data-loading="eager"></div>
+                  </div>
+                </div>
+                <div id="w-node-_07e7203e-793f-cf2b-98a1-6804db72ffdb-4252bfcf" data-w-id="07e7203e-793f-cf2b-98a1-6804db72ffdb" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="lifecycle-card-block">
+                  <div class="lifecycle-card-text-block">
+                    <h3 class="heading-style-5">Advanced Schedule system</h3>
+                    <p class="text-size-regular">Advanced reporting involves collecting, analyzing, and presenting complex.</p>
+                  </div>
+                  <div class="lifecycle-card-image-block">
+                    <div class="lifecycle-card-image small" data-w-id="4873f044-6adf-30b8-c4f8-25bfef20ee9f" data-animation-type="lottie" data-src="/documents/animation-4.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="5" data-duration="0" data-loading="eager"></div>
+                  </div>
+                </div>
+                <div id="w-node-_65c4b113-30b1-b99a-549f-47b0375ee8a4-4252bfcf" data-w-id="65c4b113-30b1-b99a-549f-47b0375ee8a4" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="lifecycle-card-block">
+                  <div class="lifecycle-card-text-block">
+                    <h3 class="heading-style-5">Salary Distribution Analysis</h3>
+                    <p class="text-size-regular">Reducing days sales outstanding improves cash flow by accelerating.</p>
+                  </div>
+                  <div class="lifecycle-card-image-block">
+                    <div data-poster-url="/videos/PointHR---06_poster.0000000.jpg" data-video-urls="/videos/PointHR---06_mp4.mp4,/videos/PointHR---06_webm.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="lifecycle-card-image small w-background-video w-background-video-atom"><video id="d35acf0e-c8a9-6c43-4b22-8a0f23866ef4-video" autoplay="" loop="" style="background-image:url(&quot;/videos/PointHR---06_poster.0000000.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                        <source src="/videos/PointHR---06_mp4.mp4" data-wf-ignore="true">
+                        <source src="/videos/PointHR---06_webm.webm" data-wf-ignore="true">
+                      </video><noscript>
+                        <style is:inline>
+  [data-wf-bgvideo-fallback-img] {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-wf-bgvideo-fallback-img] {
+      position: absolute;
+      z-index: -100;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }</style><img data-wf-bgvideo-fallback-img="true" src="/videos/PointHR---06_poster.0000000.jpg" alt="">
+                      </noscript>
+                      <div aria-live="polite"><button type="button" data-w-bg-video-control="true" aria-controls="d35acf0e-c8a9-6c43-4b22-8a0f23866ef4-video" class="w-backgroundvideo-backgroundvideoplaypausebutton display-none w-background-video--control"><span><img src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628299f8aa233b83918e24fd_Pause.svg" loading="lazy" alt="Pause video"></span><span hidden=""><img loading="lazy" alt="Play video" src="https://uploads-ssl.webflow.com/6022af993a6b2191db3ed10c/628298b20ae0236682d4b87f_Play-24.svg"></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--blue-glow--variant="v1" class="blue-glow"></div>
+        <div data-wf--purple-glow--variant="v1" class="purple-glow"></div>
+      </section>
+      <section class="section_statistics">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="statistics-wrapper">
+              <div class="statistics-content-block">
+                <div class="statistics-text-block">
+                  <h2 data-w-id="4d7a503e-d0cc-51ad-f575-9974ca0465de" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-style-2 title-animation">Manage Your Team Worldwide.</h2>
+                  <p data-w-id="f0cc484a-0ea7-eb64-22f8-0bfcc95c2940" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-size-regular">Expand your business globally without the complexity of local HR laws, payroll systems, or compliance risks. Our platform helps you hire, onboard, and manage employees across multiple countries all from one unified dashboard.</p>
+                </div>
+                <div data-w-id="e619a7f8-fd42-37be-13e3-ccc241a42640" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="statistics-number-block">
+                  <div class="single-stat-block">
+                    <div class="stat-number-block">
+                      <h3 class="statistics-number _wf-counter">132+</h3>
+                    </div>
+                    <div class="stat-text-block">
+                      <p class="text-size-regular text-color-black mobile-small">Currencies supported</p>
+                    </div>
+                  </div>
+                  <div class="stat-liner-block"></div>
+                  <div class="single-stat-block">
+                    <div class="stat-number-block">
+                      <h3 class="statistics-number _wf-counter">85.5%</h3>
+                    </div>
+                    <div class="stat-text-block">
+                      <p class="text-size-regular text-color-black mobile-small">Businesses using Proventa</p>
+                    </div>
+                  </div>
+                  <div class="stat-liner-block"></div>
+                  <div class="single-stat-block">
+                    <div class="stat-number-block">
+                      <h3 class="statistics-number _wf-counter">150M</h3>
+                    </div>
+                    <div class="stat-text-block">
+                      <p class="text-size-regular text-color-black mobile-small">Active users monthly</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="e619a7f8-fd42-37be-13e3-ccc241a4263e" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="statistics-image-block"><img src="/images/Statistics-Image.jpg" loading="lazy" sizes="(max-width: 585px) 100vw, 585px" srcset="/images/Statistics-Image-p-500.jpg 500w, /images/Statistics-Image.jpg 585w" alt="Profiles of three hired regulatory specialists, Brooklyn Simmons, Jenny Wilson, and Jane Cooper, displayed on a blue background with a globe outline." class="statistics-image"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section_pricing" class="section_pricing">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="pricing-wrapper">
+              <div class="section-heading-block">
+                <div class="section-title-block">
+                  <h2 class="heading-style-2 text-align-center title-animation">Plans to Power Your Growth</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-28rem">
+                  <p class="text-size-large text-align-center summary-animation">outlines strategies designed to accelerate personal, professional, or business development.</p>
+                </div>
+              </div>
+              <div class="pricing-content-block">
+                <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="pricing-tab-block w-tabs">
+                  <div data-w-id="39cb8921-b295-2571-26c6-0ddbc837b828" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="pricing-tab-menu w-tab-menu">
+                    <a data-w-tab="Tab 1" class="pricing-tab-link w-inline-block w-tab-link w--current">
+                      <div>Monthly</div>
+                    </a>
+                    <a data-w-tab="Tab 2" class="pricing-tab-link w-inline-block w-tab-link">
+                      <div>Yearly</div>
+                    </a>
+                  </div>
+                  <div class="pricing-tab-content w-tab-content">
+                    <div data-w-tab="Tab 1" class="pricing-tab-pane w-tab-pane w--tab-active">
+                      <div class="pricing-tab-content-inner">
+                        <div data-w-id="39cb8921-b295-2571-26c6-0ddbc837b832" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="pricing-card-block">
+                          <div class="pricing-card-content-block">
+                            <div class="pricing-card-heading-block">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5002 2.86735C16.3953 2.52033 15.2196 2.33325 14.0002 2.33325C7.55684 2.33325 2.3335 7.55659 2.3335 13.9999C2.3335 20.4432 7.55684 25.6666 14.0002 25.6666C20.4434 25.6666 25.6668 20.4432 25.6668 13.9999C25.6668 12.7805 25.4797 11.6048 25.1327 10.4999" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M17.5 11.6667C17.5 13.5998 15.933 15.1667 14 15.1667C12.0669 15.1667 10.5 13.5998 10.5 11.6667C10.5 9.73376 12.0669 8.16675 14 8.16675C15.933 8.16675 17.5 9.73376 17.5 11.6667Z" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.4165 22.7501L7.0703 21.6059C8.10888 19.7885 10.0417 18.6667 12.1351 18.6667H15.8646C17.9579 18.6667 19.8908 19.7885 20.9293 21.6059L21.5831 22.7501" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M22.1358 2.35831C22.1426 2.3249 22.1905 2.3249 22.1972 2.35831C22.5518 4.09268 23.9071 5.44807 25.6415 5.80255C25.6749 5.80938 25.6749 5.85712 25.6415 5.86396C23.9071 6.21844 22.5518 7.57382 22.1972 9.30819C22.1905 9.3416 22.1426 9.3416 22.1358 9.30819C21.7813 7.57382 20.426 6.21844 18.6916 5.86396C18.6581 5.85712 18.6581 5.80938 18.6916 5.80255C20.426 5.44807 21.7813 4.09268 22.1358 2.35831Z" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Basic Plan</div>
+                                <div class="price-text">$20<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Our Basic plan includes:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Up to 25 employees</li>
+                                <li class="pricing-card-point">Basic HR features</li>
+                                <li class="pricing-card-point">Core HR workflows</li>
+                                <li class="pricing-card-point">Time-off tracking</li>
+                                <li class="pricing-card-point">Essential integrations</li>
+                                <li class="pricing-card-point">Community support access</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a data-wf--secondary-button--variant="v1" href="/contact" class="secondary-button w-inline-block">
+                                <div class="button-text-block">
+                                  <div class="button-text is-1">Get Started</div>
+                                  <div class="button-text is-2">Get Started</div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div data-w-id="39cb8921-b295-2571-26c6-0ddbc837b850" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="pricing-card-block">
+                          <div class="pricing-card-content-block is-2">
+                            <div class="pricing-card-heading-block is-2">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.6663 14.6667C20.6663 12.0893 18.577 10 15.9997 10C13.4223 10 11.333 12.0893 11.333 14.6667C11.333 17.244 13.4223 19.3333 15.9997 19.3333C18.577 19.3333 20.6663 17.244 20.6663 14.6667Z" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20.6432 15.1332C21.0725 15.2633 21.5278 15.3333 21.9996 15.3333C24.5769 15.3333 26.6662 13.244 26.6662 10.6667C26.6662 8.08933 24.5769 6 21.9996 6C19.5797 6 17.59 7.84187 17.356 10.2002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M14.6433 10.2002C14.4093 7.84187 12.4196 6 9.99967 6C7.42234 6 5.33301 8.08933 5.33301 10.6667C5.33301 13.244 7.42234 15.3333 9.99967 15.3333C10.4714 15.3333 10.9268 15.2633 11.356 15.1332" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M29.3333 22.0002C29.3333 18.3183 26.0501 15.3335 22 15.3335" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M23.3337 26.0002C23.3337 22.3183 20.0505 19.3335 16.0003 19.3335C11.9502 19.3335 8.66699 22.3183 8.66699 26.0002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M10.0003 15.3335C5.95023 15.3335 2.66699 18.3183 2.66699 22.0002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Teams Pricing</div>
+                                <div class="price-text">$25<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Everything in Starter, and:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Up to 100 employees</li>
+                                <li class="pricing-card-point">Everything in Starter, plus:</li>
+                                <li class="pricing-card-point">Performance management tools</li>
+                                <li class="pricing-card-point">Customizable workflows</li>
+                                <li class="pricing-card-point">Dedicated support team</li>
+                                <li class="pricing-card-point">Advanced reporting</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a href="/contact" data-wf--primary-button--variant="v2" class="primary-button w-variant-9e8c97f4-c236-f797-a78f-2807d1cffbc5 w-inline-block">
+                                <div class="button-content-block">
+                                  <div class="button-text-block">
+                                    <div class="button-text is-1">Get Started for free</div>
+                                    <div class="button-text is-2">Get Started for free</div>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div data-w-id="39cb8921-b295-2571-26c6-0ddbc837b86e" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="pricing-card-block">
+                          <div class="pricing-card-content-block is-3">
+                            <div class="pricing-card-heading-block is-3">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.0832 2.91675H7.58317C5.38328 2.91675 4.28334 2.91675 3.59993 3.60017C2.9165 4.28358 2.9165 5.38352 2.9165 7.58341V20.4167C2.9165 22.6166 2.9165 23.7165 3.59993 24.4C4.28334 25.0834 5.38328 25.0834 7.58317 25.0834H15.7498V7.58341C15.7498 5.38352 15.7498 4.28358 15.0664 3.60017C14.383 2.91675 13.283 2.91675 11.0832 2.91675Z" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.4165 6.41675H7.58317M11.0832 6.41675H12.2498M6.4165 9.91675H7.58317M11.0832 9.91675H12.2498M6.4165 13.4167H7.58317M11.0832 13.4167H12.2498M6.4165 16.9167H7.58317M11.0832 16.9167H12.2498" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M9.3335 25.0833V21.5833" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20.4167 8.75H15.75V25.0833H20.4167C22.6165 25.0833 23.7165 25.0833 24.3999 24.3999C25.0833 23.7165 25.0833 22.6165 25.0833 20.4167V13.4167C25.0833 11.2168 25.0833 10.1168 24.3999 9.43342C23.7165 8.75 22.6165 8.75 20.4167 8.75Z" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M19.8335 12.25H21.0002M19.8335 15.75H21.0002M19.8335 19.25H21.0002" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Enterprise</div>
+                                <div class="price-text">$40<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Everything in Plus, and:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Unlimited employees</li>
+                                <li class="pricing-card-point">Everything in Premium, plus:</li>
+                                <li class="pricing-card-point">Dedicated account manager</li>
+                                <li class="pricing-card-point">Custom integrations</li>
+                                <li class="pricing-card-point">24/7 priority support</li>
+                                <li class="pricing-card-point">Compliance assistance</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a data-wf--secondary-button--variant="v1" href="/contact" class="secondary-button w-inline-block">
+                                <div class="button-text-block">
+                                  <div class="button-text is-1">Get Started</div>
+                                  <div class="button-text is-2">Get Started</div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-w-tab="Tab 2" class="pricing-tab-pane w-tab-pane">
+                      <div class="pricing-tab-content-inner">
+                        <div class="pricing-card-block">
+                          <div class="pricing-card-content-block">
+                            <div class="pricing-card-heading-block">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5002 2.86735C16.3953 2.52033 15.2196 2.33325 14.0002 2.33325C7.55684 2.33325 2.3335 7.55659 2.3335 13.9999C2.3335 20.4432 7.55684 25.6666 14.0002 25.6666C20.4434 25.6666 25.6668 20.4432 25.6668 13.9999C25.6668 12.7805 25.4797 11.6048 25.1327 10.4999" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M17.5 11.6667C17.5 13.5998 15.933 15.1667 14 15.1667C12.0669 15.1667 10.5 13.5998 10.5 11.6667C10.5 9.73376 12.0669 8.16675 14 8.16675C15.933 8.16675 17.5 9.73376 17.5 11.6667Z" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.4165 22.7501L7.0703 21.6059C8.10888 19.7885 10.0417 18.6667 12.1351 18.6667H15.8646C17.9579 18.6667 19.8908 19.7885 20.9293 21.6059L21.5831 22.7501" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M22.1358 2.35831C22.1426 2.3249 22.1905 2.3249 22.1972 2.35831C22.5518 4.09268 23.9071 5.44807 25.6415 5.80255C25.6749 5.80938 25.6749 5.85712 25.6415 5.86396C23.9071 6.21844 22.5518 7.57382 22.1972 9.30819C22.1905 9.3416 22.1426 9.3416 22.1358 9.30819C21.7813 7.57382 20.426 6.21844 18.6916 5.86396C18.6581 5.85712 18.6581 5.80938 18.6916 5.80255C20.426 5.44807 21.7813 4.09268 22.1358 2.35831Z" stroke="#7723F4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Basic Plan</div>
+                                <div class="price-text">$15<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Our Basic plan includes:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Up to 25 employees</li>
+                                <li class="pricing-card-point">Basic HR features</li>
+                                <li class="pricing-card-point">Core HR workflows</li>
+                                <li class="pricing-card-point">Time-off tracking</li>
+                                <li class="pricing-card-point">Essential integrations</li>
+                                <li class="pricing-card-point">Community support access</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a data-wf--secondary-button--variant="v1" href="/contact" class="secondary-button w-inline-block">
+                                <div class="button-text-block">
+                                  <div class="button-text is-1">Get Started</div>
+                                  <div class="button-text is-2">Get Started</div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pricing-card-block">
+                          <div class="pricing-card-content-block is-2">
+                            <div class="pricing-card-heading-block is-2">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.6663 14.6667C20.6663 12.0893 18.577 10 15.9997 10C13.4223 10 11.333 12.0893 11.333 14.6667C11.333 17.244 13.4223 19.3333 15.9997 19.3333C18.577 19.3333 20.6663 17.244 20.6663 14.6667Z" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20.6432 15.1332C21.0725 15.2633 21.5278 15.3333 21.9996 15.3333C24.5769 15.3333 26.6662 13.244 26.6662 10.6667C26.6662 8.08933 24.5769 6 21.9996 6C19.5797 6 17.59 7.84187 17.356 10.2002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M14.6433 10.2002C14.4093 7.84187 12.4196 6 9.99967 6C7.42234 6 5.33301 8.08933 5.33301 10.6667C5.33301 13.244 7.42234 15.3333 9.99967 15.3333C10.4714 15.3333 10.9268 15.2633 11.356 15.1332" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M29.3333 22.0002C29.3333 18.3183 26.0501 15.3335 22 15.3335" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M23.3337 26.0002C23.3337 22.3183 20.0505 19.3335 16.0003 19.3335C11.9502 19.3335 8.66699 22.3183 8.66699 26.0002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M10.0003 15.3335C5.95023 15.3335 2.66699 18.3183 2.66699 22.0002" stroke="#221BF4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Teams Pricing</div>
+                                <div class="price-text">$20<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Everything in Starter, and:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Up to 100 employees</li>
+                                <li class="pricing-card-point">Everything in Starter, plus:</li>
+                                <li class="pricing-card-point">Performance management tools</li>
+                                <li class="pricing-card-point">Customizable workflows</li>
+                                <li class="pricing-card-point">Dedicated support team</li>
+                                <li class="pricing-card-point">Advanced reporting</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a href="/contact" data-wf--primary-button--variant="v2" class="primary-button w-variant-9e8c97f4-c236-f797-a78f-2807d1cffbc5 w-inline-block">
+                                <div class="button-content-block">
+                                  <div class="button-text-block">
+                                    <div class="button-text is-1">Get Started for free</div>
+                                    <div class="button-text is-2">Get Started for free</div>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pricing-card-block">
+                          <div class="pricing-card-content-block is-3">
+                            <div class="pricing-card-heading-block is-3">
+                              <div class="pricing-card-icon-block">
+                                <div class="pricing-card-icon w-embed"><svg width="28" height="28" viewbox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.0832 2.91675H7.58317C5.38328 2.91675 4.28334 2.91675 3.59993 3.60017C2.9165 4.28358 2.9165 5.38352 2.9165 7.58341V20.4167C2.9165 22.6166 2.9165 23.7165 3.59993 24.4C4.28334 25.0834 5.38328 25.0834 7.58317 25.0834H15.7498V7.58341C15.7498 5.38352 15.7498 4.28358 15.0664 3.60017C14.383 2.91675 13.283 2.91675 11.0832 2.91675Z" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.4165 6.41675H7.58317M11.0832 6.41675H12.2498M6.4165 9.91675H7.58317M11.0832 9.91675H12.2498M6.4165 13.4167H7.58317M11.0832 13.4167H12.2498M6.4165 16.9167H7.58317M11.0832 16.9167H12.2498" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M9.3335 25.0833V21.5833" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20.4167 8.75H15.75V25.0833H20.4167C22.6165 25.0833 23.7165 25.0833 24.3999 24.3999C25.0833 23.7165 25.0833 22.6165 25.0833 20.4167V13.4167C25.0833 11.2168 25.0833 10.1168 24.3999 9.43342C23.7165 8.75 22.6165 8.75 20.4167 8.75Z" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M19.8335 12.25H21.0002M19.8335 15.75H21.0002M19.8335 19.25H21.0002" stroke="#209A61" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg></div>
+                              </div>
+                              <div class="pricing-card-text-block">
+                                <div class="text-size-large text-weight-semibold text-color-black">Enterprise</div>
+                                <div class="price-text">$36<span class="price-sm-text">/monthly</span></div>
+                              </div>
+                            </div>
+                            <div class="pricing-card-point-block">
+                              <p class="text-size-regular text-weight-semibold text-color-black">Everything in Plus, and:</p>
+                              <ul role="list" class="pricing-card-point-list w-list-unstyled">
+                                <li class="pricing-card-point">Unlimited employees</li>
+                                <li class="pricing-card-point">Everything in Premium, plus:</li>
+                                <li class="pricing-card-point">Dedicated account manager</li>
+                                <li class="pricing-card-point">Custom integrations</li>
+                                <li class="pricing-card-point">24/7 priority support</li>
+                                <li class="pricing-card-point">Compliance assistance</li>
+                              </ul>
+                            </div>
+                            <div class="pricing-card-button-block">
+                              <a data-wf--secondary-button--variant="v1" href="/contact" class="secondary-button w-inline-block">
+                                <div class="button-text-block">
+                                  <div class="button-text is-1">Get Started</div>
+                                  <div class="button-text is-2">Get Started</div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section_testimonial" class="section_testimonial">
+        <div class="section-gap overflow-hidden">
+          <div class="w-layout-blockcontainer container-fluid w-container">
+            <div class="testimonial-wrapper">
+              <div class="section-heading-block container-main">
+                <div class="section-title-block">
+                  <h2 class="heading-style-2 text-align-center title-animation">What Our Users are Saying</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-35rem">
+                  <p class="text-size-large text-align-center summary-animation">Discover what our users are saying about their experiences! From  our community shares real feedback and success stories.</p>
+                </div>
+              </div>
+              <div data-w-id="fa0b8b25-4b4e-e3e4-22cc-4c4cc927a716" class="testimonial-content-block">
+                <div class="testimonial-card-row">
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-2_1Testimonial-Avatar-2.png" alt="Smiling young man with short brown hair wearing a light blue shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Ethan Williams</div>
+                        <p class="text-size-small">Digital Marketing Specialist</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Managing employee records, leave requests, and internal processes used to be overwhelming. With this system, everything is organised and automated. It has truly improved.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/testimonial-Avatar-1_1testimonial-Avatar-1.jpg" alt="Smiling young man with glasses and dark curly hair wearing a black shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Daniel Thompson</div>
+                        <p class="text-size-small">Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-1_1Testimonial-Avatar-1.png" alt="Smiling man with short dark hair and beard wearing a dark gray shirt against a light gray background." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Michael Anderson</div>
+                        <p class="text-size-small">Administrator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">“We reduced payroll errors to zero within the first month. The system is intuitive, fast, and reliable—exactly what we needed.”</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar_1Testimonial-Avatar.png" alt="Smiling man with short dark hair and a beard, wearing a black jacket over a light shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Jonathan Parker<br></div>
+                        <p class="text-size-small">Coordinator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-2_1Testimonial-Avatar-2.png" alt="Smiling young man with short brown hair wearing a light blue shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Ethan Williams</div>
+                        <p class="text-size-small">Digital Marketing Specialist</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Managing employee records, leave requests, and internal processes used to be overwhelming. With this system, everything is organised and automated. It has truly improved.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/testimonial-Avatar-1_1testimonial-Avatar-1.jpg" alt="Smiling young man with glasses and dark curly hair wearing a black shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Daniel Thompson</div>
+                        <p class="text-size-small">Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-1_1Testimonial-Avatar-1.png" alt="Smiling man with short dark hair and beard wearing a dark gray shirt against a light gray background." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Michael Anderson</div>
+                        <p class="text-size-small">Administrator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">“We reduced payroll errors to zero within the first month. The system is intuitive, fast, and reliable—exactly what we needed.”</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar_1Testimonial-Avatar.png" alt="Smiling man with short dark hair and a beard, wearing a black jacket over a light shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Jonathan Parker<br></div>
+                        <p class="text-size-small">Coordinator</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-card-row">
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-2_1Testimonial-Avatar-2.png" alt="Smiling young man with short brown hair wearing a light blue shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Ethan Williams</div>
+                        <p class="text-size-small">Digital Marketing Specialist</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Managing employee records, leave requests, and internal processes used to be overwhelming. With this system, everything is organised and automated. It has truly improved.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/testimonial-Avatar-1_1testimonial-Avatar-1.jpg" alt="Smiling young man with glasses and dark curly hair wearing a black shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Daniel Thompson</div>
+                        <p class="text-size-small">Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-1_1Testimonial-Avatar-1.png" alt="Smiling man with short dark hair and beard wearing a dark gray shirt against a light gray background." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Michael Anderson</div>
+                        <p class="text-size-small">Administrator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">“We reduced payroll errors to zero within the first month. The system is intuitive, fast, and reliable—exactly what we needed.”</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar_1Testimonial-Avatar.png" alt="Smiling man with short dark hair and a beard, wearing a black jacket over a light shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Jonathan Parker<br></div>
+                        <p class="text-size-small">Coordinator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-2_1Testimonial-Avatar-2.png" alt="Smiling young man with short brown hair wearing a light blue shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Ethan Williams</div>
+                        <p class="text-size-small">Digital Marketing Specialist</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Managing employee records, leave requests, and internal processes used to be overwhelming. With this system, everything is organised and automated. It has truly improved.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/testimonial-Avatar-1_1testimonial-Avatar-1.jpg" alt="Smiling young man with glasses and dark curly hair wearing a black shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Daniel Thompson</div>
+                        <p class="text-size-small">Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">Before using this platform, our HR processes were scattered across multiple tools and spreadsheets. Now everything is centralised in one place—from hiring to payroll to performance tracking.</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar-1_1Testimonial-Avatar-1.png" alt="Smiling man with short dark hair and beard wearing a dark gray shirt against a light gray background." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Michael Anderson</div>
+                        <p class="text-size-small">Administrator</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card-block">
+                    <div class="testimonial-card-content-block">
+                      <div class="testimonial-card-rating-block"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"><img loading="lazy" src="/images/Testimonial-Star-1.svg" alt="testimonial-rating-star" class="testimonial-rating-star"></div>
+                      <div class="testimonial-card-text-block">
+                        <p class="text-size-regular">“We reduced payroll errors to zero within the first month. The system is intuitive, fast, and reliable—exactly what we needed.”</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-card-client-block">
+                      <div class="testimonial-client-avatar-block"><img loading="lazy" src="/images/Testimonial-Avatar_1Testimonial-Avatar.png" alt="Smiling man with short dark hair and a beard, wearing a black jacket over a light shirt." class="testimonial-client-avatar"></div>
+                      <div class="testimonial-client-info-block">
+                        <div class="text-size-large text-weight-semibold text-color-black">Jonathan Parker<br></div>
+                        <p class="text-size-small">Coordinator</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--purple-glow--variant="v1" class="purple-glow"></div>
+        <div data-wf--blue-glow--variant="v2" class="blue-glow w-variant-6a67d44b-74ec-3ffc-a833-37d395bdb6a4"></div>
+      </section>
+      <section class="section_blog">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="blog-wrapper">
+              <div class="section-heading-block container-main">
+                <div class="section-title-block max-width-35rem">
+                  <h2 class="heading-style-2 text-align-center title-animation">Blogs to Help You Grow Smarter</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-35rem">
+                  <p class="text-size-large text-align-center summary-animation">Find quick answers to common questions about Proventa’s products, services, orders, shipping, and returns.</p>
+                </div>
+              </div>
+              <div class="blog-content-block is-desktop">
+                <CollectionList id="w-node-_91ce1dd8-36fa-9711-bbc1-9b825c5b05eb-4252bfcf" blockClass="blog-collection-block is-2" listClass="blog-collection-list featured" count={homeFeatured.length}>
+                  {homeFeatured.map((item) => (
+                    <div role="listitem" class="blog-collection-item w-dyn-item">
+                      <FeaturedBlogCard blog={item} variant="home" animateId="91ce1dd8-36fa-9711-bbc1-9b825c5b05ee" />
+                    </div>
+                  ))}
+                </CollectionList>
+                <CollectionList blockClass="blog-collection-block is-2" listClass="blog-collection-list featured" count={homeSecond.length}>
+                  {homeSecond.map((item) => (
+                    <div role="listitem" class="blog-collection-item w-dyn-item">
+                      <BlogCard blog={item} titleTag="h3" animateId="1b6bf0ff-ab8c-60da-ed20-f5979a998a5b" />
+                    </div>
+                  ))}
+                </CollectionList>
+                <CollectionList id="w-node-_68f2b8d0-ceb9-b42b-a309-ddc283b6ab6b-4252bfcf" blockClass="blog-collection-block" listClass="blog-collection-list" count={homeRest.length}>
+                  {homeRest.map((item) => (
+                    <div role="listitem" class="blog-collection-item w-dyn-item">
+                      <BlogCard blog={item} titleTag="h4" animateId="68f2b8d0-ceb9-b42b-a309-ddc283b6ab6e" />
+                    </div>
+                  ))}
+                </CollectionList>
+              </div>
+              <div class="blog-content-block is-mobile">
+                <div data-delay="4000" data-animation="slide" class="blog-slider-block w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+                  <div class="blog-slider-mask w-slider-mask">
+                    <div class="blog-slide-block w-slide">
+                      <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={slide1.length}>
+                        {slide1.map((item) => (
+                          <div role="listitem" class="blog-collection-item w-dyn-item">
+                            <BlogCard blog={item} titleTag="h4" animateId="57be3e68-cfa1-dd8b-cb15-39be110f764b" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div class="blog-slide-block w-slide">
+                      <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={slide2.length}>
+                        {slide2.map((item) => (
+                          <div role="listitem" class="blog-collection-item w-dyn-item">
+                            <BlogCard blog={item} titleTag="h4" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div class="blog-slide-block w-slide">
+                      <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={slide3.length}>
+                        {slide3.map((item) => (
+                          <div role="listitem" class="blog-collection-item w-dyn-item">
+                            <BlogCard blog={item} titleTag="h4" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div class="blog-slide-block w-slide">
+                      <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={slide4.length}>
+                        {slide4.map((item) => (
+                          <div role="listitem" class="blog-collection-item w-dyn-item">
+                            <BlogCard blog={item} titleTag="h4" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div class="blog-slide-block w-slide">
+                      <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={slide5.length}>
+                        {slide5.map((item) => (
+                          <div role="listitem" class="blog-collection-item w-dyn-item">
+                            <BlogCard blog={item} titleTag="h4" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                  </div>
+                  <div class="blog-slider-arrow left w-slider-arrow-left">
+                    <div class="w-icon-slider-left"></div>
+                  </div>
+                  <div class="blog-slider-arrow right w-slider-arrow-right">
+                    <div class="w-icon-slider-right"></div>
+                  </div>
+                  <div class="display-none w-slider-nav w-round w-num"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section_faq" class="section_faq">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-sm w-container">
+            <div class="faq-wrapper">
+              <div class="section-heading-block container-main">
+                <div class="section-title-block max-width-32rem">
+                  <h2 class="heading-style-2 text-align-center title-animation">Frequently Asked Questions</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-32rem">
+                  <p class="text-size-large text-align-center summary-animation">Find quick answers to common questions about Proventa’s products, services, orders, shipping, and returns.</p>
+                </div>
+              </div>
+              <div class="faq-content-block">
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f62" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What determines pricing in the Scale and Enterprise tier?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Usually number of employees (active users), access to advanced reporting, dedicated account manager, API access, custom compliance features, and volume of payroll runs.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f6c" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What does the onboarding process look like?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Typically kickoff call, data migration (employee info, payroll history), system setup, admin training, parallel payroll testing, go-live support. Usually 2–6 weeks.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f76" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">Does Proventa charge a % of revenue?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Most HR/payroll software charges per employee per month (flat fee), not a percentage of revenue. But some PEOs or payroll providers with workers’ comp or benefits might use % of payroll. You must verify directly.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f80" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What happens if I don’t want to move forward after my free trial?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Usually you simply cancel, no charge. Your data may be exported or deleted according to their privacy policy. No auto-renewal unless you provide billing info and agree to a paid plan.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f8a" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">How much are the add-ons?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Varies widely  e.g., time tracking ($3–8/user/month), benefits admin ($5–10/user/month), background checks (per check fee), API access (extra monthly fee). Only Proventa can give exact numbers.</p>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_cta">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2017" class="cta-wrapper">
+              <div class="cta-content-block">
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2019" class="cta-title-block">
+                  <h2 class="heading-style-2 title-animation">Get Your 14- Days Free Trial Today!</h2>
+                </div>
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201c" class="cta-button-block">
+                  <a href="/contact" data-wf--primary-button--variant="v3" class="primary-button w-variant-c264619e-e3ff-1a4c-d534-29f1d91dc259 w-inline-block">
+                    <div class="button-content-block">
+                      <div class="button-text-block">
+                        <div class="button-text is-1">Start free trial</div>
+                        <div class="button-text is-2">Start free trial</div>
+                      </div>
+                    </div>
+                  </a>
+                  <a data-wf--secondary-button--variant="v2" href="/contact" class="secondary-button w-variant-a6990177-d2cd-995b-df9e-0907904478fe w-inline-block">
+                    <div class="button-text-block">
+                      <div class="button-text is-1">Get the Demo</div>
+                      <div class="button-text is-2">Get the Demo</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201f" class="cta-image-block"><img sizes="(max-width: 621px) 100vw, 621px" srcset="/images/Dashboard-p-500.png 500w, /images/Dashboard.png 621w" alt="cta-image" src="/images/Dashboard.png" loading="lazy" class="cta-image">
+                <div class="cta-image-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

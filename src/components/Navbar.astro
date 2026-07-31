@@ -1,0 +1,96 @@
+---
+const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const is = (href: string) => path === href;
+const cur = (href: string) => (is(href) ? 'page' : undefined);
+const cls = (base: string, href: string) => (is(href) ? `${base} w--current` : base);
+---
+<header class="section_header">
+      <div data-animation="over-right" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+        <div class="nav-inner-block">
+          <div class="container-nav w-container">
+            <div class="nav-content-block">
+              <a href="/" aria-current={cur('/')} class={cls('brand-logo-block w-nav-brand', '/')}><img loading="lazy" src="/images/nav-logo-2.svg" alt="nav-logo" class="brand-logo"></a>
+              <nav role="navigation" class="nav-menu-content w-nav-menu">
+                <div class="nav-link-block">
+                  <div class="nav-menu-top">
+                    <a href="/" aria-current={cur('/')} class={cls('brand-logo-block w-nav-brand', '/')}><img loading="lazy" src="/images/nav-logo-2.svg" alt="nav-logo" class="brand-logo"></a>
+                    <div class="menu-button-block">
+                      <div class="menu-close-button w-nav-button">
+                        <div class="menu-button-icon w-icon-nav-menu"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="/" aria-current={cur('/')} class={cls('nav-link w-nav-link', '/')}>Home</a>
+                  <a href="/features" aria-current={cur('/features')} class={cls('nav-link w-nav-link', '/features')}>Features</a>
+                  <a href="/blog" aria-current={cur('/blog')} class={cls('nav-link w-nav-link', '/blog')}>Blogs</a>
+                  <div data-delay="600" data-hover="false" data-w-id="a37aff2a-556b-6c35-4c0b-f2105b3dd219" class="nav-link w-dropdown">
+                    <div class="nav-dropdown-toggle w-dropdown-toggle">
+                      <div class="nav-dropdown-toggle-content">
+                        <div>Pages</div>
+                        <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                      </div>
+                    </div>
+                    <nav class="nav-dropdown-content w-dropdown-list">
+                      <div class="nav-dropdown-inner">
+                        <div class="nav-dropdown-link-block">
+                          <div class="nav-dropdown-column">
+                            <div class="nav-dropdown-title">Main Pages</div>
+                            <a href="/" aria-current={cur('/')} class={cls('nav-dropdown-link w-dropdown-link', '/')}>Home</a>
+                            <a href="/features" aria-current={cur('/features')} class={cls('nav-dropdown-link w-dropdown-link', '/features')}>Features</a>
+                            <a href="/blog" aria-current={cur('/blog')} class={cls('nav-dropdown-link w-dropdown-link', '/blog')}>Blog</a>
+                            <a href="/customers" aria-current={cur('/customers')} class={cls('nav-dropdown-link w-dropdown-link', '/customers')}>Customer</a>
+                            <a href="/contact" aria-current={cur('/contact')} class={cls('nav-dropdown-link w-dropdown-link', '/contact')}>Contact</a>
+                            <a href="#" class="nav-dropdown-link w-dropdown-link">Instruction</a>
+                          </div>
+                          <div class="nav-dropdown-column">
+                            <div class="nav-dropdown-title">Other Pages</div>
+                            <a href="/sign-in" aria-current={cur('/sign-in')} class={cls('nav-dropdown-link w-dropdown-link', '/sign-in')}>Sign In</a>
+                            <a href="/sign-up" aria-current={cur('/sign-up')} class={cls('nav-dropdown-link w-dropdown-link', '/sign-up')}>Sign Up</a>
+                            <a href="/forgot-password" aria-current={cur('/forgot-password')} class={cls('nav-dropdown-link w-dropdown-link', '/forgot-password')}>Forgot Password</a>
+                            <a href="/blog/optimizing-the-recruitment-process-6" class="nav-dropdown-link w-dropdown-link">Blog Details</a>
+                            <a href="/case-study/tandem-achieve-a-30-boost-teams-synergy" class="nav-dropdown-link w-dropdown-link">Case Study Details</a>
+                          </div>
+                          <div class="nav-dropdown-column">
+                            <div class="nav-dropdown-title">Utility Pages</div>
+                            <a href="/style-guide" aria-current={cur('/style-guide')} class={cls('nav-dropdown-link w-dropdown-link', '/style-guide')}>Style Guide</a>
+                            <a href="/404" aria-current={cur('/404')} class={cls('nav-dropdown-link w-dropdown-link', '/404')}>Not Found</a>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                  <a href="/contact" aria-current={cur('/contact')} class={cls('nav-link w-nav-link', '/contact')}>Contact</a>
+                  <div class="general-button-block is-1">
+                    <a href="/contact" data-wf--primary-button--variant="v1" class="primary-button w-inline-block">
+                      <div class="button-content-block">
+                        <div class="button-text-block">
+                          <div class="button-text is-1">Get Started for free</div>
+                          <div class="button-text is-2">Get Started for free</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </nav>
+              <div class="nav-button-block">
+                <div class="general-button-block is-2">
+                  <a href="/contact" data-wf--primary-button--variant="v1" class="primary-button w-inline-block">
+                    <div class="button-content-block">
+                      <div class="button-text-block">
+                        <div class="button-text is-1">Get Started for free</div>
+                        <div class="button-text is-2">Get Started for free</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="menu-button-block">
+                  <div class="menu-open-button w-nav-button">
+                    <div class="menu-button-icon w-icon-nav-menu"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>

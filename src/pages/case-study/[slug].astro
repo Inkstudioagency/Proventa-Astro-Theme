@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCaseStudies, mediaUrl, richText, type CaseStudy } from '../../lib/strapi';
+import { lightboxVideoJson } from '../../lib/webflow';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCaseStudies();
+  return caseStudies.map((caseStudy) => ({
+    params: { slug: caseStudy.slug },
+    props: { caseStudy },
+  }));
+}
+
+interface Props {
+  caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+const videoJson = caseStudy.videoLink ? lightboxVideoJson(caseStudy.videoLink) : null;
+---
+
+<BaseLayout
+  title={`${caseStudy.title} || Saas Astro Theme`}
+  description={caseStudy.summary}
+  ogImage={mediaUrl(caseStudy.mainImage)}
+  wfPage="6a6ade7014d4ca494252bfe4"
+>
+  <div class="page-wrapper">
+    <Navbar />
+    <main class="main-wrapper">
+      <section class="section_hero">
+        <div class="hero-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="hero-wrapper">
+              <div class="hero-content-block">
+                <div class="hero-title-block">
+                  <h1 class="heading-style-1 title-animation">{caseStudy.title}</h1>
+                </div>
+                <div class="hero-summary-block">
+                  <p class="text-size-large text-align-center text-weight-medium summary-animation">{caseStudy.shortText}</p>
+                </div>
+                <div class="hero-avatar-block is-1"><img src="/images/Case-Study-Avatar_1Case-Study-Avatar.png" loading="lazy" alt="hero-avatar" class="hero-avatar"></div>
+                <div class="hero-avatar-block is-2"><img src="/images/Case-Study-Avatar-3_1Case-Study-Avatar-3.png" loading="lazy" alt="hero-avatar" class="hero-avatar"></div>
+                <div class="hero-avatar-block is-3"><img src="/images/Case-Study-Avatar-1_1Case-Study-Avatar-1.png" loading="lazy" alt="hero-avatar" class="hero-avatar"></div>
+                <div class="hero-avatar-block is-4"><img src="/images/Case-Study-Avatar-2_1Case-Study-Avatar-2.png" loading="lazy" alt="hero-avatar" class="hero-avatar"></div>
+              </div>
+              <div data-w-id="f2208a4b-9a78-494a-96fd-e1422447ad62" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="case-study-main-image-block"><img src={mediaUrl(caseStudy.mainImage)} loading="lazy" alt={caseStudy.title} class="case-study-main-image">
+                <div class="case-study-logo-block"><img src={mediaUrl(caseStudy.whiteLogo)} loading="lazy" alt={caseStudy.title} class="case-study-logo"></div>
+                <div class="case-study-info-block">
+                  <div class="case-study-summary-block">
+                    <p class="case-study-summary">{caseStudy.summary}</p>
+                  </div>
+                  <div class="case-study-information-block">
+                    <div class="case-study-single-info-block">
+                      <div class="case-study-info-title">Company Size</div>
+                      <p class="case-study-info-text">{caseStudy.companySize}</p>
+                    </div>
+                    <div class="case-study-single-info-block">
+                      <div class="case-study-info-title">Location</div>
+                      <p class="case-study-info-text">{caseStudy.location}</p>
+                    </div>
+                  </div>
+                  <div class="case-study-video-block">
+                    <a href="#" class="case-study-video-icon w-inline-block w-lightbox">
+                      <div class="case-study-video-play-icon w-embed"><svg width="25" height="27" viewbox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M23.3645 14.5157C22.8004 16.6589 20.1347 18.1734 14.803 21.2024C9.64886 24.1305 7.07189 25.5947 4.9951 25.0061C4.13649 24.7628 3.35419 24.3008 2.72328 23.6642C1.19727 22.1245 1.19727 19.1382 1.19727 13.1656C1.19727 7.193 1.19727 4.2067 2.72328 2.66706C3.35419 2.03053 4.13649 1.56842 4.9951 1.32512C7.07189 0.736616 9.64886 2.20068 14.803 5.12883C20.1347 8.1578 22.8004 9.67231 23.3645 11.8155C23.5973 12.7003 23.5973 13.631 23.3645 14.5157Z" stroke="currentColor" stroke-width="2.39377" stroke-linejoin="round"></path>
+                        </svg></div>
+                      {videoJson && <script is:inline type="application/json" class="w-json" set:html={videoJson}></script>}
+                    </a>
+                  </div>
+                </div>
+                <div class="case-study-overlay-block"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="case-study-details-section">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="case-study-details-wrapper">
+              <div class="case-study-details-content">
+                <div data-w-id="e4f1e5e5-0b56-8f9e-ad41-c003c817ce87" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="details-rich-text w-richtext" set:html={richText(caseStudy.details)}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--blue-glow--variant="v1" class="blue-glow"></div>
+      </section>
+      <section class="section_cta">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2017" class="cta-wrapper">
+              <div class="cta-content-block">
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2019" class="cta-title-block">
+                  <h2 class="heading-style-2 title-animation">Get Your 14- Days Free Trial Today!</h2>
+                </div>
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201c" class="cta-button-block">
+                  <a href="/contact" data-wf--primary-button--variant="v3" class="primary-button w-variant-c264619e-e3ff-1a4c-d534-29f1d91dc259 w-inline-block">
+                    <div class="button-content-block">
+                      <div class="button-text-block">
+                        <div class="button-text is-1">Start free trial</div>
+                        <div class="button-text is-2">Start free trial</div>
+                      </div>
+                    </div>
+                  </a>
+                  <a data-wf--secondary-button--variant="v2" href="/contact" class="secondary-button w-variant-a6990177-d2cd-995b-df9e-0907904478fe w-inline-block">
+                    <div class="button-text-block">
+                      <div class="button-text is-1">Get the Demo</div>
+                      <div class="button-text is-2">Get the Demo</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201f" class="cta-image-block"><img sizes="(max-width: 621px) 100vw, 621px" srcset="/images/Dashboard-p-500.png 500w, /images/Dashboard.png 621w" alt="cta-image" src="/images/Dashboard.png" loading="lazy" class="cta-image">
+                <div class="cta-image-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

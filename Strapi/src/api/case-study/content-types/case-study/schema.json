@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study",
+    "description": "Customer stories shown on /customers and the case study detail pages."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    },
+    "shortText": {
+      "type": "text"
+    },
+    "darkLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "whiteLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "industry": {
+      "type": "enumeration",
+      "enum": [
+        "Healthcare",
+        "Technology",
+        "Finance",
+        "Education",
+        "Retail",
+        "Manufacturing",
+        "Hospitality"
+      ]
+    },
+    "companySize": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "videoLink": {
+      "type": "string"
+    },
+    "details": {
+      "type": "richtext"
+    },
+    "publishDate": {
+      "type": "date"
+    }
+  }
+}

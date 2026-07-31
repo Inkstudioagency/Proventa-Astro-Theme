@@ -1,0 +1,36 @@
+---
+import type { CaseStudy } from '../lib/strapi';
+import { mediaUrl } from '../lib/strapi';
+import { SCROLL_IN_STYLE } from '../lib/webflow';
+
+interface Props {
+  caseStudy: CaseStudy;
+  animateId?: string;
+}
+
+const { caseStudy, animateId } = Astro.props;
+const href = `/case-study/${caseStudy.slug}`;
+---
+
+<div
+  data-w-id={animateId}
+  style={animateId ? SCROLL_IN_STYLE : undefined}
+  class="case-study-item-card-block"
+>
+  <div class="case-study-card-image-block"><img src={mediaUrl(caseStudy.mainImage)} loading="lazy" alt={caseStudy.title} class="case-study-card-image"></div>
+  <div class="case-study-card-content-block">
+    <div class="case-study-card-title-block">
+      <h3 class="case-study-card-title">{caseStudy.title}</h3>
+    </div>
+    <div class="case-study-card-button-block">
+      <a href={href} data-wf--primary-button--variant="v2" class="primary-button w-variant-9e8c97f4-c236-f797-a78f-2807d1cffbc5 w-inline-block">
+        <div class="button-content-block">
+          <div class="button-text-block">
+            <div class="button-text is-1">Read case study</div>
+            <div class="button-text is-2">Read case study</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

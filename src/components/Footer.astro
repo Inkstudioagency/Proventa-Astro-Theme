@@ -1,0 +1,87 @@
+---
+const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const is = (href: string) => path === href;
+const cur = (href: string) => (is(href) ? 'page' : undefined);
+const cls = (base: string, href: string) => (is(href) ? `${base} w--current` : base);
+---
+<footer class="section_footer">
+      <div class="section-gap-sm">
+        <div class="w-layout-blockcontainer container-large w-container">
+          <div class="footer-wrapper">
+            <div data-w-id="95dddd35-dc39-9678-1809-aba2a2b5a160" class="footer-content-block">
+              <div class="footer-main-content-block">
+                <div class="footer-info-content-block">
+                  <a href="/" aria-current={cur('/')} class={cls('footer-logo-block w-inline-block', '/')}><img src="/images/Footer-Logo-3.svg" loading="lazy" alt="footer-logo" class="footer-logo"></a>
+                  <div class="footer-social-info-block">
+                    <a aria-label="footer-social-icon-block" href="https://x.com/" target="_blank" class="footer-social-icon-block w-inline-block">
+                      <div class="footer-social-icon w-embed"><svg width="18" height="17" viewbox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.1757 0H16.9357L10.9058 6.8925L18 16.2698H12.4455L8.0955 10.5818L3.117 16.2698H0.3555L6.8055 8.89725L0 0.000750035H5.6955L9.62775 5.19975L14.1757 0ZM13.2075 14.6182H14.7368L4.8645 1.56525H3.2235L13.2075 14.6182Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                    <a aria-label="footer-social-icon-block" href="https://fb.com/" target="_blank" class="footer-social-icon-block w-inline-block">
+                      <div class="footer-social-icon w-embed"><svg width="22" height="22" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18.3333 9.16667C18.3333 4.10667 14.2267 0 9.16667 0C4.10667 0 0 4.10667 0 9.16667C0 13.6033 3.15333 17.2975 7.33333 18.15V11.9167H5.5V9.16667H7.33333V6.875C7.33333 5.10583 8.7725 3.66667 10.5417 3.66667H12.8333V6.41667H11C10.4958 6.41667 10.0833 6.82917 10.0833 7.33333V9.16667H12.8333V11.9167H10.0833V18.2875C14.7125 17.8292 18.3333 13.9242 18.3333 9.16667Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                    <a aria-label="footer-social-icon-block" href="https://www.instagram.com/" target="_blank" class="footer-social-icon-block w-inline-block">
+                      <div class="footer-social-icon w-embed"><svg width="20" height="20" viewbox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10.1095 0C11.1408 0.00275 11.6642 0.00825 12.1161 0.0210833L12.2939 0.0275C12.4993 0.0348333 12.7019 0.044 12.9466 0.055C13.9219 0.100833 14.5874 0.254833 15.1714 0.48125C15.7764 0.714083 16.286 1.02942 16.7957 1.53817C17.2618 1.9964 17.6225 2.55071 17.8526 3.1625C18.079 3.74642 18.233 4.41192 18.2789 5.38817C18.2899 5.632 18.299 5.83458 18.3064 6.04083L18.3119 6.21867C18.3256 6.66967 18.3311 7.19308 18.3329 8.22433L18.3339 8.90817V10.109C18.3361 10.7776 18.3291 11.4462 18.3128 12.1147L18.3073 12.2925C18.2999 12.4988 18.2908 12.7013 18.2798 12.9452C18.2339 13.9214 18.0781 14.586 17.8526 15.1708C17.6231 15.783 17.2624 16.3374 16.7957 16.7952C16.3373 17.2611 15.7831 17.6218 15.1714 17.8521C14.5874 18.0785 13.9219 18.2325 12.9466 18.2783C12.7291 18.2886 12.5115 18.2977 12.2939 18.3058L12.1161 18.3113C11.6642 18.3242 11.1408 18.3306 10.1095 18.3324L9.4257 18.3333H8.22578C7.55685 18.3356 6.88793 18.3286 6.2192 18.3123L6.04136 18.3068C5.82376 18.2985 5.6062 18.289 5.3887 18.2783C4.41336 18.2325 3.74786 18.0785 3.16303 17.8521C2.55131 17.6223 1.99723 17.2616 1.53961 16.7952C1.07307 16.3371 0.712068 15.7828 0.481779 15.1708C0.255362 14.5869 0.101362 13.9214 0.0555289 12.9452C0.0453161 12.7277 0.0361494 12.5101 0.0280289 12.2925L0.0234457 12.1147C0.00655338 11.4462 -0.00108633 10.7776 0.000528917 10.109V8.22433C-0.00202947 7.55572 0.00469347 6.8871 0.0206957 6.21867L0.0271123 6.04083C0.0344456 5.83458 0.0436123 5.632 0.0546123 5.38817C0.100446 4.41192 0.254445 3.74733 0.480862 3.1625C0.71105 2.55008 1.07277 1.99561 1.54053 1.53817C1.99803 1.07202 2.55174 0.711322 3.16303 0.48125C3.74786 0.254833 4.41245 0.100833 5.3887 0.055C5.63253 0.044 5.83603 0.0348333 6.04136 0.0275L6.2192 0.0219999C6.88762 0.00571332 7.55624 -0.00131514 8.22486 0.0009166L10.1095 0ZM9.1672 4.58333C7.95162 4.58333 6.78583 5.06622 5.92629 5.92576C5.06675 6.7853 4.58386 7.95109 4.58386 9.16667C4.58386 10.3822 5.06675 11.548 5.92629 12.4076C6.78583 13.2671 7.95162 13.75 9.1672 13.75C10.3828 13.75 11.5486 13.2671 12.4081 12.4076C13.2676 11.548 13.7505 10.3822 13.7505 9.16667C13.7505 7.95109 13.2676 6.7853 12.4081 5.92576C11.5486 5.06622 10.3828 4.58333 9.1672 4.58333ZM9.1672 6.41667C9.52833 6.41661 9.88594 6.48768 10.2196 6.62582C10.5533 6.76397 10.8565 6.96648 11.1119 7.2218C11.3673 7.47712 11.5699 7.78024 11.7081 8.11386C11.8464 8.44749 11.9176 8.80507 11.9177 9.16621C11.9177 9.52734 11.8466 9.88496 11.7085 10.2186C11.5704 10.5523 11.3678 10.8555 11.1125 11.1109C10.8572 11.3663 10.5541 11.5689 10.2205 11.7072C9.88684 11.8454 9.52925 11.9166 9.16811 11.9167C8.43877 11.9167 7.73929 11.6269 7.22357 11.1112C6.70784 10.5955 6.41811 9.89601 6.41811 9.16667C6.41811 8.43732 6.70784 7.73785 7.22357 7.22212C7.73929 6.7064 8.43877 6.41667 9.16811 6.41667M13.9806 3.20833C13.6767 3.20833 13.3853 3.32906 13.1704 3.54394C12.9555 3.75883 12.8348 4.05027 12.8348 4.35417C12.8348 4.65806 12.9555 4.94951 13.1704 5.16439C13.3853 5.37928 13.6767 5.5 13.9806 5.5C14.2845 5.5 14.576 5.37928 14.7908 5.16439C15.0057 4.94951 15.1264 4.65806 15.1264 4.35417C15.1264 4.05027 15.0057 3.75883 14.7908 3.54394C14.576 3.32906 14.2845 3.20833 13.9806 3.20833Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="footer-link-content-block">
+                  <div class="footer-link-block">
+                    <div class="footer-link-title">Main Pages</div>
+                    <a href="/" aria-current={cur('/')} class={cls('footer-link', '/')}>Home</a>
+                    <a href="/features" aria-current={cur('/features')} class={cls('footer-link', '/features')}>Features</a>
+                    <a href="/blog" aria-current={cur('/blog')} class={cls('footer-link', '/blog')}>Blog</a>
+                    <a href="/customers" aria-current={cur('/customers')} class={cls('footer-link', '/customers')}>Customers</a>
+                  </div>
+                  <div class="footer-link-block">
+                    <div class="footer-link-title">Other Pages</div>
+                    <a href="/sign-in" aria-current={cur('/sign-in')} class={cls('footer-link', '/sign-in')}>Sign In</a>
+                    <a href="/sign-up" aria-current={cur('/sign-up')} class={cls('footer-link', '/sign-up')}>Sign Up</a>
+                    <a href="#" class="footer-link">Instruction</a>
+                    <a href="#" class="footer-link">Licenses</a>
+                  </div>
+                  <div class="footer-link-block">
+                    <div class="footer-link-title">Company</div>
+                    <a href="/#section_tools" class="footer-link">Product overview</a>
+                    <a href="/#section_solution" class="footer-link">Solution</a>
+                    <a href="/#section_tools-two" class="footer-link">Tools</a>
+                    <a href="/#section_tools" class="footer-link">Plartform</a>
+                  </div>
+                  <div class="footer-link-block">
+                    <div class="footer-link-title">Resources</div>
+                    <a href="/#section_automation" class="footer-link">Automation</a>
+                    <a href="/#section_pricing" class="footer-link">Pricing</a>
+                    <a href="/#section_testimonial" class="footer-link">Testimonial</a>
+                    <a href="/#section_faq" class="footer-link">FAQ</a>
+                  </div>
+                  <div id="w-node-_9a1ebd9b-a6fd-57ca-4eb5-5a8545419033-a2b5a15c" class="footer-link-block">
+                    <div class="footer-link-title">Contact Info</div>
+                    <a href="#" class="footer-link">Phone: +(123) 456789</a>
+                    <a href="#" class="footer-link">Mail: hello@example.com</a>
+                    <a href="https://maps.google.com/" target="_blank" class="footer-link">Location</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom-block">
+              <div class="footer-bottom-content-block">
+                <div class="copyright-text-block">
+                  <p class="footer-bottom-text">Copyright © Proventa | Designed by <a href="https://www.inks.studio/" target="_blank" class="footer-bottom-text-link">Ink Studio</a> - Powered by <a href="https://astro.build/themes/author/3299" target="_blank" class="footer-bottom-text-link">Astro</a>
+                  </p>
+                </div>
+                <div class="footer-bottom-link-block">
+                  <a href="/404" aria-current={cur('/404')} class={cls('footer-bottom-link', '/404')}>404</a>
+                  <a href="/style-guide" aria-current={cur('/style-guide')} class={cls('footer-bottom-link', '/style-guide')}>Style Guide</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bg-block"><img src="/images/Footer-BG-Glow.svg" loading="lazy" alt="footer-bg-shape" class="footer-bg-shape"></div>
+    </footer>

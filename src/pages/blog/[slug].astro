@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import CollectionList from '../../components/CollectionList.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getBlogs, mediaUrl, formatDate, richText, type Blog } from '../../lib/strapi';
+
+export async function getStaticPaths() {
+  const blogs = await getBlogs();
+  return blogs.map((blog) => ({
+    params: { slug: blog.slug },
+    props: {
+      blog,
+      related: blogs.filter((b) => b.slug !== blog.slug && b.category === blog.category).slice(0, 3),
+    },
+  }));
+}
+
+interface Props {
+  blog: Blog;
+  related: Blog[];
+}
+
+const { blog, related } = Astro.props;
+
+const socials = [blog.socialLinkOne, blog.socialLinkTwo, blog.socialLinkThree, blog.socialLinkFour];
+---
+
+<BaseLayout
+  title={`${blog.title} || Saas Astro Theme`}
+  description={blog.summary}
+  ogImage={mediaUrl(blog.mainImage)}
+  wfPage="6a6ade7014d4ca494252bfe2"
+>
+  <div class="page-wrapper">
+    <Navbar />
+    <main class="main-wrapper">
+      <section class="section_hero">
+        <div class="hero-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="hero-wrapper">
+              <div class="hero-content-block">
+                <div class="hero-title-block medium">
+                  <h1 class="heading-style-1 title-animation">{blog.title}</h1>
+                </div>
+              </div>
+              <div data-w-id="63b27c19-1a11-a449-dd05-d5b1ae6d3dae" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="blog-hero-image-block"><img src={mediaUrl(blog.mainImage)} loading="lazy" alt={blog.title} class="blog-hero-image"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_blog-details">
+        <div class="blog-details-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div data-w-id="02714072-d656-e923-f635-212c84ab0e2b" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="blog-details-wrapper">
+              <div class="blog-details-info-block">
+                <div class="blog-details-client-block"><img src={mediaUrl(blog.authorImage)} loading="lazy" alt="" class="blog-card-author-image lg">
+                  <div class="blog-details-client-text-block">
+                    <div class="blog-card-author-name lg">{blog.authorName}</div>
+                    <p class="blog-card-author-designation">{blog.authorDesignation}</p>
+                  </div>
+                </div>
+                <div class="blog-details-date-block">
+                  <div class="blog-card-author-name lg">Published</div>
+                  <p class="blog-card-author-designation">{formatDate(blog.publishDate)}</p>
+                </div>
+                <div class="blog-details-social-block">
+                  <div class="blog-card-author-name lg">Share</div>
+                  <div class="blog-social-block">
+                    <a aria-label="blog-single-social-block" href={socials[0] || '#'} target="_blank" class="blog-single-social-block w-inline-block">
+                      <div class="blog-single-social w-embed"><svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.81964 3.10368H9.9163V1.24868C9.38532 1.19346 8.85181 1.1662 8.31797 1.16701C6.7313 1.16701 5.6463 2.13534 5.6463 3.90868V5.43701H3.85547V7.51368H5.6463V12.8337H7.79297V7.51368H9.57797L9.8463 5.43701H7.79297V4.11284C7.79297 3.50034 7.9563 3.10368 8.81964 3.10368Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                    <a aria-label="blog-single-social-block" href={socials[1] || '#'} target="_blank" class="blog-single-social-block w-inline-block">
+                      <div class="blog-single-social w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00065 6.34732C7.67365 6.34732 7.354 6.44428 7.08211 6.62595C6.81022 6.80762 6.59831 7.06584 6.47317 7.36795C6.34803 7.67005 6.31529 8.00248 6.37909 8.3232C6.44288 8.64392 6.60034 8.93851 6.83157 9.16973C7.06279 9.40096 7.35739 9.55842 7.6781 9.62222C7.99882 9.68601 8.33125 9.65327 8.63335 9.52813C8.93546 9.403 9.19368 9.19108 9.37535 8.91919C9.55702 8.6473 9.65398 8.32765 9.65398 8.00065C9.65398 7.78353 9.61122 7.56854 9.52813 7.36795C9.44504 7.16736 9.32326 6.98509 9.16973 6.83157C9.01621 6.67804 8.83395 6.55626 8.63335 6.47317C8.43276 6.39008 8.21777 6.34732 8.00065 6.34732ZM14.6207 4.71398C14.6171 4.19916 14.5223 3.68903 14.3407 3.20732C14.2068 2.85482 13.9998 2.53471 13.7332 2.26811C13.4666 2.0015 13.1465 1.79446 12.794 1.66065C12.3123 1.47896 11.8021 1.38416 11.2873 1.38065C10.4273 1.33398 10.174 1.33398 8.00065 1.33398C5.82732 1.33398 5.57398 1.33398 4.71398 1.38065C4.19916 1.38416 3.68903 1.47896 3.20732 1.66065C2.85482 1.79446 2.53471 2.0015 2.26811 2.26811C2.0015 2.53471 1.79446 2.85482 1.66065 3.20732C1.47896 3.68903 1.38416 4.19916 1.38065 4.71398C1.33398 5.57398 1.33398 5.82732 1.33398 8.00065C1.33398 10.174 1.33398 10.4273 1.38065 11.2873C1.38783 11.804 1.4825 12.3156 1.66065 12.8007C1.79387 13.1515 2.00074 13.4698 2.26732 13.734C2.53278 14.0022 2.85358 14.2092 3.20732 14.3407C3.68903 14.5223 4.19916 14.6171 4.71398 14.6207C5.57398 14.6673 5.82732 14.6673 8.00065 14.6673C10.174 14.6673 10.4273 14.6673 11.2873 14.6207C11.8021 14.6171 12.3123 14.5223 12.794 14.3407C13.1477 14.2092 13.4685 14.0022 13.734 13.734C14.0006 13.4698 14.2074 13.1515 14.3407 12.8007C14.5222 12.3166 14.6169 11.8043 14.6207 11.2873C14.6673 10.4273 14.6673 10.174 14.6673 8.00065C14.6673 5.82732 14.6673 5.57398 14.6207 4.71398ZM12.9273 10.0473C12.9059 10.4587 12.8181 10.864 12.6673 11.2473C12.5379 11.5671 12.3455 11.8576 12.1016 12.1016C11.8576 12.3455 11.5671 12.5379 11.2473 12.6673C10.8603 12.8097 10.4528 12.8885 10.0407 12.9007C9.51398 12.9007 9.37398 12.9007 8.00065 12.9007C6.62732 12.9007 6.48732 12.9007 5.96065 12.9007C5.54847 12.8885 5.14098 12.8097 4.75398 12.6673C4.42339 12.5445 4.12484 12.3485 3.88065 12.094C3.6391 11.8548 3.45255 11.5659 3.33398 11.2473C3.19102 10.8607 3.11439 10.4528 3.10732 10.0407C3.10732 9.51398 3.10732 9.37398 3.10732 8.00065C3.10732 6.62732 3.10732 6.48732 3.10732 5.96065C3.11439 5.54853 3.19102 5.14057 3.33398 4.75398C3.45684 4.42339 3.65283 4.12484 3.90732 3.88065C4.14754 3.6404 4.43616 3.45405 4.75398 3.33398C5.14098 3.19159 5.54847 3.11279 5.96065 3.10065C6.48732 3.10065 6.62732 3.10065 8.00065 3.10065C9.37398 3.10065 9.51398 3.10065 10.0407 3.10065C10.4528 3.11279 10.8603 3.19159 11.2473 3.33398C11.5779 3.45684 11.8765 3.65283 12.1207 3.90732C12.3622 4.14648 12.5488 4.43541 12.6673 4.75398C12.8097 5.14098 12.8885 5.54847 12.9007 5.96065C12.9007 6.48732 12.9007 6.62732 12.9007 8.00065C12.9007 9.37398 12.9473 9.51398 12.9273 10.0407V10.0473ZM11.8607 5.08732C11.7813 4.87197 11.6561 4.67641 11.4938 4.51413C11.3316 4.35184 11.136 4.22669 10.9206 4.14732C10.625 4.04482 10.3135 3.99518 10.0007 4.00065C9.48065 4.00065 9.33398 4.00065 8.00065 4.00065C6.66732 4.00065 6.52065 4.00065 6.00065 4.00065C5.68616 4.00372 5.3747 4.06241 5.08065 4.17398C4.8686 4.24976 4.67511 4.36979 4.51304 4.52612C4.35097 4.68244 4.22403 4.87148 4.14065 5.08065C4.04384 5.37756 3.99654 5.68838 4.00065 6.00065C4.00065 6.52065 4.00065 6.66732 4.00065 8.00065C4.00065 9.33398 4.00065 9.48065 4.00065 10.0007C4.00726 10.3148 4.06583 10.6257 4.17398 10.9206C4.25336 11.136 4.37851 11.3316 4.54079 11.4938C4.70308 11.6561 4.89864 11.7813 5.11398 11.8607C5.39843 11.9653 5.69775 12.0238 6.00065 12.034C6.52065 12.034 6.66732 12.034 8.00065 12.034C9.33398 12.034 9.48065 12.034 10.0007 12.034C10.3151 12.0309 10.6266 11.9722 10.9206 11.8607C11.136 11.7813 11.3316 11.6561 11.4938 11.4938C11.6561 11.3316 11.7813 11.136 11.8607 10.9206C11.9722 10.6266 12.0309 10.3151 12.034 10.0007C12.034 9.48065 12.034 9.33398 12.034 8.00065C12.034 6.66732 12.034 6.52065 12.034 6.00065C12.0342 5.68585 11.9754 5.3738 11.8607 5.08065V5.08732ZM8.00065 10.5473C7.66653 10.5473 7.33569 10.4814 7.02709 10.3533C6.71849 10.2253 6.43819 10.0376 6.20224 9.80101C5.96629 9.56445 5.77933 9.28365 5.65208 8.97471C5.52483 8.66578 5.45977 8.33477 5.46065 8.00065C5.46065 7.49668 5.61018 7.00405 5.89031 6.58511C6.17044 6.16617 6.56857 5.83976 7.0343 5.64721C7.50003 5.45465 8.01242 5.40461 8.5066 5.50342C9.00079 5.60222 9.45455 5.84543 9.81044 6.20226C10.1663 6.55908 10.4084 7.01348 10.5059 7.50792C10.6034 8.00236 10.552 8.51462 10.3582 8.97985C10.1644 9.44507 9.83699 9.84234 9.41731 10.1214C8.99764 10.4004 8.50462 10.5486 8.00065 10.5473ZM10.6673 5.95398C10.5199 5.93839 10.3836 5.8688 10.2844 5.75863C10.1853 5.64846 10.1305 5.50551 10.1305 5.35732C10.1305 5.20912 10.1853 5.06617 10.2844 4.956C10.3836 4.84584 10.5199 4.77625 10.6673 4.76065C10.8147 4.77625 10.9511 4.84584 11.0502 4.956C11.1493 5.06617 11.2042 5.20912 11.2042 5.35732C11.2042 5.50551 11.1493 5.64846 11.0502 5.75863C10.9511 5.8688 10.8147 5.93839 10.6673 5.95398Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                    <a aria-label="blog-single-social-block" href={socials[2] || '#'} target="_blank" class="blog-single-social-block w-inline-block">
+                      <div class="blog-single-social w-embed"><svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_4166_17159)">
+                            <path d="M0 1.41717C0 1.00639 0.143775 0.667499 0.431313 0.400504C0.71885 0.133497 1.09266 0 1.55273 0C2.00458 0 2.37016 0.131439 2.64949 0.394343C2.93703 0.665454 3.0808 1.01871 3.0808 1.45414C3.0808 1.84848 2.94114 2.17709 2.66181 2.44C2.37428 2.71111 1.99636 2.84666 1.52808 2.84666H1.51576C1.0639 2.84666 0.69832 2.71111 0.418989 2.44C0.139659 2.16889 0 1.82794 0 1.41717ZM0.160202 12.2V3.96807H2.89596V12.2H0.160202ZM4.41171 12.2H7.14746V7.60342C7.14746 7.31587 7.18033 7.09406 7.24605 6.93797C7.36106 6.65864 7.53565 6.42244 7.76979 6.22938C8.00393 6.03632 8.29763 5.93979 8.6509 5.93979C9.57103 5.93979 10.0311 6.56005 10.0311 7.80059V12.2H12.7669V7.48019C12.7669 6.2643 12.4793 5.34211 11.9042 4.71363C11.3291 4.08515 10.5692 3.7709 9.62443 3.7709C8.56463 3.7709 7.73898 4.22686 7.14746 5.13878V5.16343H7.13514L7.14746 5.13878V3.96807H4.41171C4.42814 4.23097 4.43636 5.0484 4.43636 6.42039C4.43636 7.79237 4.42814 9.7189 4.41171 12.2Z" fill="currentColor"></path>
+                          </g>
+                          <defs>
+                            <clippath id="clip0_4166_17159">
+                              <rect width="12.7669" height="12.2" fill="currentColor"></rect>
+                            </clippath>
+                          </defs>
+                        </svg></div>
+                    </a>
+                    <a aria-label="blog-single-social-block" href={socials[3] || '#'} target="_blank" class="blog-single-social-block w-inline-block">
+                      <div class="blog-single-social w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.6673 3.86583C14.1662 4.08323 13.6363 4.22694 13.094 4.2925C13.6661 3.95071 14.0948 3.41302 14.3007 2.77916C13.763 3.09921 13.1745 3.32469 12.5607 3.44583C12.1503 3.00088 11.604 2.70469 11.0072 2.60373C10.4104 2.50277 9.79701 2.60274 9.26318 2.88796C8.72934 3.17318 8.30527 3.62752 8.05748 4.17972C7.80968 4.73192 7.75218 5.35076 7.89398 5.93916C6.80694 5.88418 5.74361 5.60113 4.77309 5.1084C3.80256 4.61568 2.94655 3.92429 2.26065 3.07916C2.02008 3.49928 1.89366 3.97504 1.89398 4.45916C1.89313 4.90875 2.00346 5.35157 2.21515 5.74821C2.42685 6.14484 2.73333 6.48297 3.10732 6.7325C2.67264 6.72067 2.24724 6.60403 1.86732 6.3925V6.42583C1.87058 7.05576 2.09131 7.66522 2.49219 8.15114C2.89307 8.63705 3.44949 8.96959 4.06732 9.0925C3.82949 9.16487 3.58257 9.20303 3.33398 9.20583C3.16191 9.20382 2.99027 9.18821 2.82065 9.15916C2.99659 9.70104 3.33707 10.1746 3.7947 10.5139C4.25234 10.8533 4.80437 11.0415 5.37398 11.0525C4.41212 11.8093 3.22457 12.2224 2.00065 12.2258C1.77781 12.2266 1.55514 12.2132 1.33398 12.1858C2.5836 12.9927 4.03986 13.421 5.52732 13.4192C6.55378 13.4298 7.57207 13.2358 8.52273 12.8485C9.47338 12.4613 10.3373 11.8884 11.0641 11.1635C11.7909 10.4386 12.366 9.57609 12.7557 8.62643C13.1454 7.67678 13.342 6.65898 13.334 5.6325C13.334 5.51916 13.334 5.39916 13.334 5.27916C13.8571 4.88904 14.3083 4.41078 14.6673 3.86583Z" fill="currentColor"></path>
+                        </svg></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-details-text-block">
+                <div class="details-rich-text w-richtext" set:html={richText(blog.details)}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--blue-glow--variant="v1" class="blue-glow"></div>
+      </section>
+      <section class="section_blog">
+        <div class="section-gap bottom">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="blog-wrapper">
+              <div data-w-id="482d6ee3-0856-b7dc-0546-0de279c9d9b7" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="blog-heading-block">
+                <h2 class="heading-style-5">Related Articles</h2>
+              </div>
+              <CollectionList blockClass="blog-collection-block" listClass="blog-collection-list" count={related.length}>
+                {related.map((item) => (
+                  <div role="listitem" class="blog-collection-item w-dyn-item">
+                    <BlogCard blog={item} titleTag="h3" animateId="871767c6-19a9-86b0-422d-e3dbfac56560" />
+                  </div>
+                ))}
+              </CollectionList>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

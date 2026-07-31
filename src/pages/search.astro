@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title={`Search Results || Saas Astro Theme`}
+  wfPage="6a6ade7014d4ca494252bfe3"
+  description={`Proventa is a conversion-focused Astro theme for Business, Software, and SaaS companies to present products with clarity, capture leads, build trust, and establish a modern, professional online presence that drives growth and credibility.`}
+  ogImage={`https://cdn.prod.website-files.com/69df29ae693be6c15d65e13f/69e92760f35acb5c0b3b554f_open%20graph%20image%20(7).png`}
+>
+  <div>
+    <Navbar />
+    <section class="section_search">
+      <div class="section-gap">
+        <div class="container-main w-container">
+          <div class="search-heading-block">
+            <h1 class="heading-style-1 text-align-left">Search results</h1>
+          </div>
+          <form action="/search" class="search-field w-form"><label for="search">Search</label><input class="contact-form-text-field w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""><input type="submit" class="primary-button form w-button" value="Search"></form>
+        </div>
+      </div>
+    </section>
+    <Footer />
+  </div>
+</BaseLayout>

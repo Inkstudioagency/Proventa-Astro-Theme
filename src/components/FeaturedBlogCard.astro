@@ -1,0 +1,46 @@
+---
+import type { Blog } from '../lib/strapi';
+import { mediaUrl } from '../lib/strapi';
+import { SCROLL_IN_STYLE } from '../lib/webflow';
+
+interface Props {
+  blog: Blog;
+  /** `page` is the wide card on /blog, `home` the boxed one on the home page. */
+  variant?: 'page' | 'home';
+  animateId?: string;
+}
+
+const { blog, variant = 'page', animateId } = Astro.props;
+const isHome = variant === 'home';
+const href = `/blog/${blog.slug}`;
+---
+
+<div
+  data-w-id={animateId}
+  style={animateId ? SCROLL_IN_STYLE : undefined}
+  class={isHome ? 'blog-item-card-block featured-home' : 'blog-item-card-block featured'}
+>
+  <div class="blog-card-content-block featured">
+    <div class="featured-blog-tag">Featured  Article</div>
+    <a aria-label="blog-card-title-block" href={href} class="blog-card-title-block w-inline-block">
+      <h2 class={isHome ? 'featured-blog-card-title small' : 'featured-blog-card-title'}>{blog.title}</h2>
+    </a>
+    <div class={isHome ? 'blog-card-summary-block featured-home' : 'blog-card-summary-block featured'}>
+      <p class={isHome ? 'featured-blog-card-summary opacity-0-8' : 'featured-blog-card-summary'}>{blog.summary}</p>
+    </div>
+    {isHome && (
+      <div class="blog-card-author-block"><img loading="lazy" src={mediaUrl(blog.authorImage)} alt="" class="blog-card-author-image">
+        <div class="blog-card-author-name text-color-white">{blog.authorName}</div>
+      </div>
+    )}
+    <div class="blog-card-button-block">
+      <a data-wf--secondary-button--variant="v3" href={href} class="secondary-button w-variant-628a88c7-a6e4-fcef-8db8-e4de7db58408 w-inline-block">
+        <div class="button-text-block">
+          <div class="button-text is-1">Read article</div>
+          <div class="button-text is-2">Read article</div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <a aria-label="blog-card-thumbnail-block" href={href} class="blog-card-thumbnail-block w-inline-block"><img loading="lazy" src={mediaUrl(blog.thumbnail)} alt={blog.title} class="blog-card-thumbnail"></a>
+</div>

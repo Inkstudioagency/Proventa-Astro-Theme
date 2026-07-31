@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title={`Not Found || Saas Astro Theme`}
+  wfPage="6a6ade7014d4ca494252bfd3"
+  description={`Proventa is a conversion-focused Astro theme for Business, Software, and SaaS companies to present products with clarity, capture leads, build trust, and establish a modern, professional online presence that drives growth and credibility.`}
+  ogImage={`https://cdn.prod.website-files.com/69df29ae693be6c15d65e13f/69e92760f35acb5c0b3b554f_open%20graph%20image%20(7).png`}
+>
+  <div class="page-wrapper">
+    <Navbar />
+    <main class="main-wrapper">
+      <section class="section_not-found">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="not-found-content-block">
+              <div class="not-found-text-block">
+                <div class="not-found-subtitle-block"><img loading="lazy" src="/images/error-icon.svg" alt="not-found-subtitle-icon" class="not-found-subtitle-icon">
+                  <div class="not-found-subtitle-text">Error 404</div>
+                </div>
+                <h2 class="heading-style-2 text-align-center">Page Not Found</h2>
+                <div class="body-text-main text-align-center">The page you are looking for doesn&#x27;t exist or has been moved<br></div>
+              </div>
+              <div class="not-found-image-block"><img alt="not-found-image" src="/images/404-error-with-portals-pana-1.svg" class="not-found-image"></div>
+              <div class="not-found-button-block">
+                <a href="/" data-wf--primary-button--variant="v1" class="primary-button w-inline-block">
+                  <div class="button-content-block">
+                    <div class="button-text-block">
+                      <div class="button-text is-1">Go To Home Page</div>
+                      <div class="button-text is-2">Go To Home Page</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

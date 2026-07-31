@@ -1,0 +1,47 @@
+---
+import type { Blog } from '../lib/strapi';
+import { mediaUrl } from '../lib/strapi';
+import { SCROLL_IN_STYLE } from '../lib/webflow';
+
+interface Props {
+  blog: Blog;
+  /** Heading level the card uses in this placement. */
+  titleTag?: 'h2' | 'h3' | 'h4';
+  /** Webflow interaction id; when set the card animates in on scroll. */
+  animateId?: string;
+  /** Extra class on the author name (the home hero variant is white). */
+  authorNameClass?: string;
+  /** `loading` attribute Webflow emitted for this placement. */
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  blog,
+  titleTag = 'h4',
+  animateId,
+  authorNameClass = '',
+  loading = 'lazy',
+} = Astro.props;
+
+const Title = titleTag;
+const href = `/blog/${blog.slug}`;
+---
+
+<div
+  data-w-id={animateId}
+  style={animateId ? SCROLL_IN_STYLE : undefined}
+  class="blog-item-card-block"
+>
+  <a aria-label="blog-card-thumbnail-block" href={href} class="blog-card-thumbnail-block w-inline-block"><img src={mediaUrl(blog.thumbnail)} loading={loading} alt={blog.title} class="blog-card-thumbnail"></a>
+  <div class="blog-card-content-block">
+    <a aria-label="blog-card-title-block" href={href} class="blog-card-title-block w-inline-block">
+      <Title class={`blog-card-title`}>{blog.title}</Title>
+    </a>
+    <div class="blog-card-summary-block">
+      <p class="blog-card-summary">{blog.summary}</p>
+    </div>
+    <div class="blog-card-author-block"><img src={mediaUrl(blog.authorImage)} loading={loading} alt="" class="blog-card-author-image">
+      <div class={`blog-card-author-name${authorNameClass ? ' ' + authorNameClass : ''}`}>{blog.authorName}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const jsonLd = `{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Our Valued Clients from Industries",
+  "description": "Explore case studies and success stories from our clients across healthcare, technology, finance, education, retail, manufacturing, and hospitality industries.",
+  "url": "/customers",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Article",
+        "position": 1,
+        "name": "Tandem: Achieve a 30% boost team's synergy",
+        "url": "/case-study/tandem-achieve-a-30-boost-teams-synergy",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e64108b2ca53551ecd8ba9_Property%201%3DTandem.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 2,
+        "name": "Zantic: 25% savings on HR costs Reduced administrative burden",
+        "url": "/case-study/zantic-25-savings-on-hr-costs-reduced-administrative-burden",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e640e800e97ed8d6e4e858_Property%201%3DZantic.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 3,
+        "name": "Flikbox: 40% faster candidate pipeline Enhanced",
+        "url": "/case-study/flikbox-40-faster-candidate-pipeline-enhanced",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e640cb482ecef67e8ec509_Property%201%3DFlikbox.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 4,
+        "name": "Heline: 15% boost in staff loyalty Better employee retention rate",
+        "url": "/case-study/heline-15-boost-in-staff-loyalty-better-employee-retention-rate",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e640ad26ce30e42b6090ce_Property%201%3DHeline.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 5,
+        "name": "Digice: 20% better audit outcomes Improved compliance standards",
+        "url": "/case-study/digice-20-better-audit-outcomes-improved-compliance-standards",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e6408febacff240210f980_Property%201%3DDigice.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 6,
+        "name": "Pera: 35% happier work force Increased employee satisfaction",
+        "url": "/case-study/pera-35-happier-work-force-increased-employee-satisfaction",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e6407082cd22187124f1a8_Property%201%3DPera.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 7,
+        "name": "Unify: 10% growth in yearly income Increased market share",
+        "url": "/case-study/unify-10-growth-in-yearly-income-increased-market-share",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e64049ebbb8da096808faf_Property%201%3DUnify.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 8,
+        "name": "Unicoin: 45% cut in process faults Streamlined workflows",
+        "url": "/case-study/unicoin-45-cut-in-process-faults-streamlined-workflows",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e6402a435af67ecad81a15_Property%201%3DUnicoin.svg"
+      },
+      {
+        "@type": "Article",
+        "position": 9,
+        "name": "Tapline: 50% better data insights Smarter business decisions",
+        "url": "/case-study/tapline-50-better-data-insights-smarter-business-decisions",
+        "image": "https://cdn.prod.website-files.com/69e5c77e3e5ccb87f3716151/69e63edec892621173188a6b_Property%201%3DTapline.svg"
+      }
+    ]
+  }
+}`;
+import { getCaseStudies } from '../lib/strapi';
+import CollectionList from '../components/CollectionList.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+const caseStudies = await getCaseStudies();
+const byIndustry = (industry: string) => caseStudies.filter((c) => c.industry === industry);
+const healthcare = byIndustry('Healthcare');
+const technology = byIndustry('Technology');
+const finance = byIndustry('Finance');
+const education = byIndustry('Education');
+const retail = byIndustry('Retail');
+const manufacturing = byIndustry('Manufacturing');
+const hospitality = byIndustry('Hospitality');
+---
+
+<BaseLayout
+  title={`Customers || Saas Astro Theme`}
+  wfPage="6a6ade7014d4ca494252bfdb"
+  description={`Proventa is a conversion-focused Astro theme for Business, Software, and SaaS companies to present products with clarity, capture leads, build trust, and establish a modern, professional online presence that drives growth and credibility.`}
+  ogImage={`https://cdn.prod.website-files.com/69df29ae693be6c15d65e13f/69e92760f35acb5c0b3b554f_open%20graph%20image%20(7).png`}
+  jsonLd={jsonLd}
+>
+  <div class="page-wrapper">
+    <Navbar />
+    <main class="main-wrapper">
+      <section class="section_hero">
+        <div class="hero-gap customers">
+          <div class="w-layout-blockcontainer container-fluid w-container">
+            <div class="hero-wrapper">
+              <div class="hero-content-block">
+                <div class="hero-title-block medium">
+                  <h1 class="heading-style-1 title-animation">our valued clients from industries</h1>
+                </div>
+                <div class="hero-summary-block small">
+                  <p class="text-size-large text-align-center text-weight-medium summary-animation">Find the perfect plan to optimize talent acquisition, streamline HR processes, and empower your team.</p>
+                </div>
+              </div>
+              <div><img src="/images/Illustration.svg" loading="lazy" alt="Illustration"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_case-study">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div class="case-study-wrapper">
+              <div class="case-study-content-block">
+                <div data-w-id="2490da5e-3a70-5ff3-234d-1fec2180d3a1" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="blog-heading-block">
+                  <h2 class="heading-style-5 text-weight-bold">Recent Articles</h2>
+                </div>
+                <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="blog-tab-block w-tabs">
+                  <div data-w-id="7b44addb-f10f-a83f-e351-7fcd0f46a3a1" style="opacity:0;-webkit-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 80px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="case-study-tab-menu w-tab-menu">
+                    <a data-w-tab="Tab 1" class="blog-tab-link w-inline-block w-tab-link w--current">
+                      <div>All </div>
+                    </a>
+                    <a data-w-tab="Tab 2" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Healthcare</div>
+                    </a>
+                    <a data-w-tab="Tab 3" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Technology</div>
+                    </a>
+                    <a data-w-tab="Tab 4" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Finance</div>
+                    </a>
+                    <a data-w-tab="Tab 5" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Education</div>
+                    </a>
+                    <a data-w-tab="Tab 6" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Retail</div>
+                    </a>
+                    <a data-w-tab="Tab 7" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Manufacturing</div>
+                    </a>
+                    <a data-w-tab="Tab 8" class="blog-tab-link w-inline-block w-tab-link">
+                      <div>Hospitality</div>
+                    </a>
+                  </div>
+                  <div class="blog-tab-content w-tab-content">
+                    <div data-w-tab="Tab 1" class="blog-tab-pane w-tab-pane w--tab-active">
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={caseStudies.length}>
+                        {caseStudies.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} animateId="b61a8c07-2218-3709-0e8c-5d91269845dd" />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 2" class="blog-tab-pane w-tab-pane">
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={healthcare.length}>
+                        {healthcare.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 3" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-1" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={technology.length}>
+                        {technology.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 4" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-3" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={finance.length}>
+                        {finance.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 5" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-2" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={education.length}>
+                        {education.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 6" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-4" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={retail.length}>
+                        {retail.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 7" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-5" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={manufacturing.length}>
+                        {manufacturing.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                    <div data-w-tab="Tab 8" class="blog-tab-pane w-tab-pane">
+                      <div class="blog-heading-block">
+                        <h3 class="heading-style-5 text-weight-bold">Recent Articles</h3>
+                        <form action="/search" class="blog-search-block w-form"><input class="blog-search-input w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""><input type="submit" class="blog-search-button w-button" value=""></form>
+                      </div>
+                      <CollectionList blockClass="case-study-collection-block" listClass="case-study-collection-list" count={hospitality.length}>
+                        {hospitality.map((item) => (
+                          <div role="listitem" class="case-study-collection-item w-dyn-item">
+                            <CaseStudyCard caseStudy={item} />
+                          </div>
+                        ))}
+                      </CollectionList>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--blue-glow--variant="v1" class="blue-glow"></div>
+        <div data-wf--purple-glow--variant="v2" class="purple-glow w-variant-68702794-49e7-9728-968e-fb7193bff2e8"></div>
+      </section>
+      <section id="section_faq" class="section_faq">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-sm w-container">
+            <div class="faq-wrapper">
+              <div class="section-heading-block container-main">
+                <div class="section-title-block max-width-32rem">
+                  <h2 class="heading-style-2 text-align-center title-animation">Frequently Asked Questions</h2>
+                </div>
+                <div class="section_summary_block top-space max-width-32rem">
+                  <p class="text-size-large text-align-center summary-animation">Find quick answers to common questions about Proventa’s products, services, orders, shipping, and returns.</p>
+                </div>
+              </div>
+              <div class="faq-content-block">
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f62" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What determines pricing in the Scale and Enterprise tier?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Usually number of employees (active users), access to advanced reporting, dedicated account manager, API access, custom compliance features, and volume of payroll runs.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f6c" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What does the onboarding process look like?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Typically kickoff call, data migration (employee info, payroll history), system setup, admin training, parallel payroll testing, go-live support. Usually 2–6 weeks.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f76" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">Does Proventa charge a % of revenue?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Most HR/payroll software charges per employee per month (flat fee), not a percentage of revenue. But some PEOs or payroll providers with workers’ comp or benefits might use % of payroll. You must verify directly.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f80" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">What happens if I don’t want to move forward after my free trial?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Usually you simply cancel, no charge. Your data may be exported or deleted according to their privacy policy. No auto-renewal unless you provide billing info and agree to a paid plan.</p>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="600" data-hover="false" data-w-id="298f7823-0002-6bbd-a0f4-d83d86bd6f8a" class="faq-dropdown-block w-dropdown">
+                  <div class="faq-question-block w-dropdown-toggle">
+                    <div class="faq-question">How much are the add-ons?</div>
+                    <div class="faq-icon-block">
+                      <div class="faq-icon w-embed"><svg width="20" height="20" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.00049 3.8335C8.09239 3.83367 8.1665 3.90855 8.1665 4.00049V7.8335H12.0005C12.0924 7.83367 12.1665 7.90854 12.1665 8.00049C12.1663 8.09229 12.0923 8.16633 12.0005 8.1665H8.1665V12.0005C8.16633 12.0923 8.09229 12.1663 8.00049 12.1665C7.90854 12.1665 7.83367 12.0924 7.8335 12.0005V8.1665H4.00049C3.90855 8.1665 3.83367 8.09239 3.8335 8.00049C3.8335 7.90844 3.90844 7.8335 4.00049 7.8335H7.8335V4.00049C7.8335 3.90844 7.90844 3.8335 8.00049 3.8335Z" fill="#353739" stroke="#353739"></path>
+                        </svg></div>
+                    </div>
+                  </div>
+                  <nav class="faq-answer-block w-dropdown-list">
+                    <div class="faq-answer-inner">
+                      <p class="faq-answer">Varies widely  e.g., time tracking ($3–8/user/month), benefits admin ($5–10/user/month), background checks (per check fee), API access (extra monthly fee). Only Proventa can give exact numbers.</p>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_cta">
+        <div class="section-gap">
+          <div class="w-layout-blockcontainer container-main w-container">
+            <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2017" class="cta-wrapper">
+              <div class="cta-content-block">
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c2019" class="cta-title-block">
+                  <h2 class="heading-style-2 title-animation">Get Your 14- Days Free Trial Today!</h2>
+                </div>
+                <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201c" class="cta-button-block">
+                  <a href="/contact" data-wf--primary-button--variant="v3" class="primary-button w-variant-c264619e-e3ff-1a4c-d534-29f1d91dc259 w-inline-block">
+                    <div class="button-content-block">
+                      <div class="button-text-block">
+                        <div class="button-text is-1">Start free trial</div>
+                        <div class="button-text is-2">Start free trial</div>
+                      </div>
+                    </div>
+                  </a>
+                  <a data-wf--secondary-button--variant="v2" href="/contact" class="secondary-button w-variant-a6990177-d2cd-995b-df9e-0907904478fe w-inline-block">
+                    <div class="button-text-block">
+                      <div class="button-text is-1">Get the Demo</div>
+                      <div class="button-text is-2">Get the Demo</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div data-w-id="0f69d8be-c286-8f76-4f04-a86de10c201f" class="cta-image-block"><img sizes="(max-width: 621px) 100vw, 621px" srcset="/images/Dashboard-p-500.png 500w, /images/Dashboard.png 621w" alt="cta-image" src="/images/Dashboard.png" loading="lazy" class="cta-image">
+                <div class="cta-image-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

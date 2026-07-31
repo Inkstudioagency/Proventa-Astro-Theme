@@ -1,0 +1,31 @@
+---
+/** Webflow Collection List shell: the wrapper, the list, and the empty state. */
+interface Props {
+  id?: string;
+  /** Class on the outer `w-dyn-list` block. */
+  blockClass?: string;
+  /** Class on the inner `w-dyn-items` list. */
+  listClass?: string;
+  /** Number of items rendered into the slot; drives the empty state. */
+  count: number;
+}
+
+const {
+  id,
+  blockClass = 'blog-collection-block',
+  listClass = 'blog-collection-list',
+  count,
+} = Astro.props;
+---
+
+<div id={id} class={`${blockClass} w-dyn-list`}>
+  {count > 0 ? (
+    <div role="list" class={`${listClass} w-dyn-items`}>
+      <slot />
+    </div>
+  ) : (
+    <div class="w-dyn-empty">
+      <div>No items found.</div>
+    </div>
+  )}
+</div>
